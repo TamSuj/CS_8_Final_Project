@@ -9,8 +9,8 @@ TextInput::TextInput() : TextInput(BOX_DEFAULT_SIZE) { }
 TextInput::TextInput(const sf::Vector2f &pos, const sf::Vector2f &size)
 : cursor(sf::milliseconds(300)), box(BOX_DEFAULT_SIZE), text("") {
     box.setPosition(pos);
-    box.setFillColor(sf::Color::White);
-    box.setOutlineColor(sf::Color(179, 179, 179));
+    box.setFillColor(TEXT_BOX_BG_COLOR);
+    box.setOutlineColor(TEXT_BOX_OUTLINE_COLOR);
     box.setOutlineThickness(1);
     box.setSize(size);
     text.setPosition({box.getPosition().x + 10,box.getPosition().y+10});
@@ -42,10 +42,10 @@ void TextInput::update() {
         cursor.setPosition({text.getPosition().x + DEFAULT_TEXT_SIZE/3, text.getPosition().y-3});
 
 //    Resize box if text is too long
-    if(text.getPosition().x > box.getSize().x) {
+    if(text.getPosition().x > box.getSize().x)
         box.setSize({text.getPosition().x - 2 * DEFAULT_TEXT_SIZE, box.getSize().y});
-    }
 
+//    Change bg color and outline color of the box if hovered
     if(checkState(HOVERED)) {
         box.setFillColor(sf::Color(240, 240, 240)); //Light grey
         box.setOutlineColor(sf::Color(179, 179, 179));
@@ -56,7 +56,6 @@ void TextInput::update() {
         cursor.setColor(DEFAULT_TEXT_COLOR);
     else
         cursor.setColor(sf::Color::Transparent);
-
 
 }
 
