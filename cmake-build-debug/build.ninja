@@ -1,0 +1,260 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: SFML_Template
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/tammy/CLionProjects/FinalProject/cmake-build-debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target SFML_Template
+
+
+#############################################
+# Order-only phony target for SFML_Template
+
+build cmake_object_order_depends_target_SFML_Template: phony || CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/main.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/main.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/main.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/MultiText.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/MultiText.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/MultiText.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Letter.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Letter.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Letter.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Application.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Application.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Application.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Font.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Font.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Font.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Box.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Box.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Box.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/States.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/States.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/States.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/GUIComponent.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/GUIComponent.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/GUIComponent.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/EventHandler.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/EventHandler.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/EventHandler.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Helper.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Helper.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Helper.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Snapshot.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Snapshot.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Snapshot.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/SnapshotInterface.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/SnapshotInterface.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/SnapshotInterface.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/KeyboardShortcut.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/MouseEvents.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/MouseEvents.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/MouseEvents.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/History.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/History.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/History.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/TextInput.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/TextInput.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/TextInput.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Cursor.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Cursor.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Cursor.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+build CMakeFiles/SFML_Template.dir/Label.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Label.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/Label.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target SFML_Template
+
+
+#############################################
+# Link the executable SFML_Template
+
+build SFML_Template: CXX_EXECUTABLE_LINKER__SFML_Template_Debug CMakeFiles/SFML_Template.dir/main.cpp.o CMakeFiles/SFML_Template.dir/MultiText.cpp.o CMakeFiles/SFML_Template.dir/Letter.cpp.o CMakeFiles/SFML_Template.dir/Application.cpp.o CMakeFiles/SFML_Template.dir/Font.cpp.o CMakeFiles/SFML_Template.dir/Box.cpp.o CMakeFiles/SFML_Template.dir/States.cpp.o CMakeFiles/SFML_Template.dir/GUIComponent.cpp.o CMakeFiles/SFML_Template.dir/EventHandler.cpp.o CMakeFiles/SFML_Template.dir/Helper.cpp.o CMakeFiles/SFML_Template.dir/Snapshot.cpp.o CMakeFiles/SFML_Template.dir/SnapshotInterface.cpp.o CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o CMakeFiles/SFML_Template.dir/MouseEvents.cpp.o CMakeFiles/SFML_Template.dir/History.cpp.o CMakeFiles/SFML_Template.dir/TextInput.cpp.o CMakeFiles/SFML_Template.dir/Cursor.cpp.o CMakeFiles/SFML_Template.dir/Label.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0
+  LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib  /opt/homebrew/lib/libsfml-audio.2.6.0.dylib  /opt/homebrew/lib/libsfml-window.2.6.0.dylib  /opt/homebrew/lib/libsfml-system.2.6.0.dylib
+  OBJECT_DIR = CMakeFiles/SFML_Template.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = SFML_Template
+  TARGET_PDB = SFML_Template.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/tammy/CLionProjects/FinalProject/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/tammy/CLionProjects/FinalProject/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/tammy/CLionProjects/FinalProject -B/Users/tammy/CLionProjects/FinalProject/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/tammy/CLionProjects/FinalProject/cmake-build-debug
+
+build all: phony SFML_Template
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Users/tammy/CLionProjects/FinalProject/CMakeLists.txt /opt/homebrew/lib/cmake/SFML/SFMLConfig.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigDependencies.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigVersion.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets-release.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Users/tammy/CLionProjects/FinalProject/CMakeLists.txt /opt/homebrew/lib/cmake/SFML/SFMLConfig.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigDependencies.cmake /opt/homebrew/lib/cmake/SFML/SFMLConfigVersion.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets-release.cmake /opt/homebrew/lib/cmake/SFML/SFMLSharedTargets.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
