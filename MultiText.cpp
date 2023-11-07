@@ -22,16 +22,27 @@ void MultiText::setPosition(sf::Vector2f pos) {
 }
 
 void MultiText::push(char text){
-    if(textList.empty()) {
-        Letter letter(text);
-        letter.setPosition(position.x, position.y);
-        textList.push_back(letter);
-    }else{
-        sf::Glyph g = textList.back().getFont()->getGlyph(textList.back().getString()[0], textList.back().getCharacterSize(), true);
+    if (text == '\n') {
+        // If the Enter key is pressed, move to a new line
+        position.y += lineHeight; // Move to the next line
 
         Letter letter(text);
-        letter.setPosition(textList.back().getPosition().x + g.advance, textList.back().getPosition().y);
+        letter.setPosition(position.x-DEFAULT_TEXT_SIZE+10, textList.back().getPosition().y + lineHeight);
         textList.push_back(letter);
+    }
+    else{
+        if (textList.empty()) {
+            Letter letter(text);
+            letter.setPosition(position.x, position.y);
+            textList.push_back(letter);
+        } else {
+            sf::Glyph g = textList.back().getFont()->getGlyph(textList.back().getString()[0],
+                                                              textList.back().getCharacterSize(), true);
+
+            Letter letter(text);
+            letter.setPosition(textList.back().getPosition().x + g.advance, textList.back().getPosition().y);
+            textList.push_back(letter);
+        }
     }
 }
 
@@ -61,6 +72,11 @@ MultiText::iterator MultiText::end() {
 }
 
 void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
+    if(KeyboardShortcut::isUndo()) {
+        std::cout << "Undo" << std::endl;
+        applySnapshot(getSnapshot());
+    }
+
     if (event.type == sf::Event::TextEntered){
         char input = static_cast<char>(event.text.unicode);
 
@@ -68,14 +84,43 @@ void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
             if (textList.size() > 0)
                 textList.pop_back();
         }
-        else if (event.text.unicode < 128) { // Handle regular ASCII characters
+        else if(event.text.unicode < 128)  // Handle regular ASCII characters
             push(input);
-        }
+
     }
 }
 
 void MultiText::update() {
+    std::string target = "";
+    bool found;
 
+    for (auto w = textList.begin(); w != textList.end(); w++) {
+        found = false;
+
+        if(w->getString() != ' ') {
+            target += w->getString();
+
+
+            for (const auto str: reservedWords) {
+                if (str == target) {
+                    found = true;
+                    break; // Exit the loop early if found
+                }
+            }
+
+            if (found) {
+
+                for(auto i = w; i != textList.begin(); i--) {
+                    i->setFillColor(KEYWORD_COLOR);
+
+                    if(i->getString() == target[0])
+                        break;
+                }
+            }
+        }
+        else
+            target = "";
+    }
 }
 
 Snapshot &MultiText::getSnapshot() {
@@ -104,4 +149,8 @@ sf::Vector2f MultiText::getPosition() const{
 
 bool MultiText::empty() {
     return textList.empty();
+}
+
+void MultiText::setLineHeight(const int height) {
+    lineHeight = height;
 }

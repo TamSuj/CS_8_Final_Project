@@ -19,6 +19,7 @@ const sf::Vector2f INPUT_BOX_SIZE = {300, DEFAULT_TEXT_SIZE+20};
 const sf::Color DEFAULT_TEXT_COLOR = sf::Color(32, 30, 32);
 const sf::Color BG_COLOR = sf::Color(242, 241, 230);
 const sf::Color DARK_BLUE = sf::Color(67, 135, 253);
+const sf::Color KEYWORD_COLOR = sf::Color(156, 103, 232);
 const sf::Color LIGHT_BLUE = sf::Color(96, 152, 247);
 const sf::Vector2f BOX_DEFAULT_SIZE = {200, 50};
 

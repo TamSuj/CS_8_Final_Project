@@ -31,7 +31,7 @@ class TextInput : public GUIComponent {
 
 public:
     TextInput();
-    TextInput(const sf::Vector2f &pos, const sf::Vector2f &size = {100, 50});
+    TextInput(const sf::Vector2f &pos, const sf::Vector2f &size = {150, 50});
 
     //    Event handler
     void eventHandler(sf::RenderWindow& window, sf::Event event);

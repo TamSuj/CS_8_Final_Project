@@ -13,6 +13,8 @@ public:
     KeyboardShortcut();
     static bool isUndo();
     static bool isScreenshot();
+    static bool isSave();
+    static bool isSelectAll();
 };
 
 

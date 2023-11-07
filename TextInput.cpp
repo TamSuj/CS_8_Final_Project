@@ -36,18 +36,19 @@ void TextInput::eventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void TextInput::update() {
+    text.update();
     cursor.update();
 
     if(!text.empty())
         cursor.setPosition({text.getPosition().x + DEFAULT_TEXT_SIZE/3, text.getPosition().y-3});
 
 //    Resize box if text is too long
-    if(text.getPosition().x > box.getSize().x)
-        box.setSize({text.getPosition().x - 2 * DEFAULT_TEXT_SIZE, box.getSize().y});
+//    if(text.getPosition().x > box.getSize().x)
+//        box.setSize({text.getPosition().x - 2 * DEFAULT_TEXT_SIZE, box.getSize().y});
 
 //    Change bg color and outline color of the box if hovered
     if(checkState(HOVERED)) {
-        box.setFillColor(sf::Color(240, 240, 240)); //Light grey
+        box.setFillColor(sf::Color(247, 247, 247)); //Light grey
         box.setOutlineColor(sf::Color(179, 179, 179));
     }else
         box.setFillColor(sf::Color::White); //Dark grey
