@@ -6,7 +6,9 @@
 
 Snapshot::Snapshot() { }
 
-Snapshot::Snapshot(std::string message) : snapshot(message) { }
+Snapshot::Snapshot(std::string message) {
+    snapshot = message;
+}
 
 std::string Snapshot::getString() const {
     return snapshot;

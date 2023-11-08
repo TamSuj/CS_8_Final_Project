@@ -7,7 +7,7 @@
 TextInput::TextInput() : TextInput(BOX_DEFAULT_SIZE) { }
 
 TextInput::TextInput(const sf::Vector2f &pos, const sf::Vector2f &size)
-: cursor(sf::milliseconds(300)), box(BOX_DEFAULT_SIZE), text("") {
+: cursor(sf::milliseconds(200)), box(BOX_DEFAULT_SIZE), text("") {
     box.setPosition(pos);
     box.setFillColor(TEXT_BOX_BG_COLOR);
     box.setOutlineColor(TEXT_BOX_OUTLINE_COLOR);
@@ -40,7 +40,9 @@ void TextInput::update() {
     cursor.update();
 
     if(!text.empty())
-        cursor.setPosition({text.getPosition().x + DEFAULT_TEXT_SIZE/3, text.getPosition().y-3});
+        cursor.setPosition({text.getPosition().x + DEFAULT_TEXT_SIZE / 3, text.getPosition().y - 3});
+
+
 
 //    Resize box if text is too long
 //    if(text.getPosition().x > box.getSize().x)
@@ -53,10 +55,17 @@ void TextInput::update() {
     }else
         box.setFillColor(sf::Color::White); //Dark grey
 
-    if(checkState(CLICKED))
+    if(checkState(CLICKED)) {
         cursor.setColor(DEFAULT_TEXT_COLOR);
-    else
+        box.setOutlineThickness(2);
+        box.setOutlineColor(DARK_BLUE);
+    }
+    else {
         cursor.setColor(sf::Color::Transparent);
+        box.setOutlineThickness(1);
+        box.setOutlineColor(TEXT_BOX_OUTLINE_COLOR);
+    }
+
 
 }
 

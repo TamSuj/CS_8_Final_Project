@@ -11,6 +11,7 @@
 #include "GUIComponent.h"
 #include "States.h"
 #include "KeyboardShortcut.h"
+#include "History.h"
 
 class MultiText : public sf::Text, public GUIComponent {
 std::list<Letter> textList;
@@ -19,9 +20,8 @@ int lineHeight = DEFAULT_TEXT_SIZE + 10;
 std::vector<std::string> reservedWords = {"int", "float", "double", "char", "string", "bool", "void", "if", "else"
                                           , "for", "while", "switch", "case", "break", "continue", "return", "true"
                                           , "false", "+=", "-=", "*=", "/=", "++", "--", "&&", "||", "!", "=="
-                                          , "!=", "<", ">", "<=", ">=", ";", ":", "i++", "i--" , "cout", "cin", "endl"
-                                          , "std::", "++i", "--i", "main", "using", "namespace"};
-
+                                          , "!=", "<", ">", "<=", ">=", ";", ":", "i++", "i--" , "std::cout", "std::cin", "endl"
+                                          , "std::", "++i", "--i", "main", "using", "namespace", ";"};
 public:
     MultiText();
     MultiText(const std::string &message);
@@ -46,6 +46,8 @@ public:
 
     Snapshot& getSnapshot() override;
     void applySnapshot(const Snapshot& snapshot) override;
+
+    bool blankLetter();
 
 };
 

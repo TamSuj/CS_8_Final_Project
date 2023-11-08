@@ -21,6 +21,8 @@ void Application::run() {
 //    Box box;
 //    Application::addComponent(box);
 
+    DropdownMenu dropdownMenu({5, 5}, {200, 50}, sf::Color::Green);
+
     TextInput textInput1({250, 100} , {200, 50});
     TextInput textInput2({250, 200}, {300, 50});
     TextInput textInput3({250, 300}, {300, 50});
@@ -39,6 +41,8 @@ void Application::run() {
     Application::addComponent(label2);
     Application::addComponent(label3);
     Application::addComponent(label4);
+
+    Application::addComponent(dropdownMenu);
 
 //    if(MouseEvents<TextInput>::mouseClicked(textInput, window))
 //        std::cout << "mouse clicked" << std::endl;

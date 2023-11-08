@@ -18,6 +18,12 @@ public:
     Box();
     Box(const sf::Vector2f &size);
 
+    void setSize(sf::Vector2f size);
+    void setFillColor(sf::Color color);
+    void setOutlineColor(sf::Color color);
+    void setOutlineThickness(const int &thickness);
+    void setPosition(const sf::Vector2f& pos);
+
 //    Event handler
     void eventHandler(sf::RenderWindow& window, sf::Event event);
     void update(); //Call in every iteration

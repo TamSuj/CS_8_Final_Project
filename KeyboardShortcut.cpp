@@ -4,8 +4,6 @@
 
 #include "KeyboardShortcut.h"
 
-KeyboardShortcut::KeyboardShortcut() {}
-
 bool KeyboardShortcut::isUndo() {
     //check if command + Z is pressed
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::LSystem) || sf::Keyboard::isKeyPressed(sf::Keyboard::RSystem))
@@ -28,4 +26,9 @@ bool KeyboardShortcut::isSelectAll() {
     //check if command + A is pressed
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::LSystem) || sf::Keyboard::isKeyPressed(sf::Keyboard::RSystem))
            && sf::Keyboard::isKeyPressed(sf::Keyboard::A);
+}
+
+bool KeyboardShortcut::isEnter() {
+    //check enter button is pressed
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
 }

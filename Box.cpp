@@ -12,6 +12,26 @@ Box::Box(const sf::Vector2f &size) : box(size){
 
 }
 
+void Box::setSize(sf::Vector2f size) {
+    box.setSize(size);
+}
+
+void Box::setFillColor(sf::Color color) {
+    box.setFillColor(color);
+}
+
+void Box::setOutlineColor(sf::Color color) {
+    box.setOutlineColor(color);
+}
+
+void Box::setOutlineThickness(const int &thickness) {
+    box.setOutlineThickness(thickness);
+}
+
+void Box::setPosition(const sf::Vector2f &pos) {
+    box.setPosition(pos);
+}
+
 void Box::eventHandler(sf::RenderWindow &window, sf::Event event) {
 //    If mouse is in the bound of the box
     sf::Vector2f mpos = (sf::Vector2f) sf::Mouse::getPosition(window);

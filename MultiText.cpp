@@ -4,9 +4,7 @@
 
 #include "MultiText.h"
 
-MultiText::MultiText() : MultiText("") {
-
-}
+MultiText::MultiText() : MultiText("") { }
 
 MultiText::MultiText(const std::string &message) {
     push(message);
@@ -23,11 +21,9 @@ void MultiText::setPosition(sf::Vector2f pos) {
 
 void MultiText::push(char text){
     if (text == '\n') {
-        // If the Enter key is pressed, move to a new line
-        position.y += lineHeight; // Move to the next line
-
-        Letter letter(text);
-        letter.setPosition(position.x-DEFAULT_TEXT_SIZE+10, textList.back().getPosition().y + lineHeight);
+        Letter letter('\0');
+        letter.setFillColor(sf::Color::Transparent);
+        letter.setPosition(position.x, textList.back().getPosition().y + lineHeight);
         textList.push_back(letter);
     }
     else{
@@ -44,6 +40,8 @@ void MultiText::push(char text){
             textList.push_back(letter);
         }
     }
+//    std::cout << "Multitext pushing"<< getSnapshot().getString();
+    History::push(getSnapshot(), this);
 }
 
 void MultiText::push(const std::string& text){
@@ -72,10 +70,12 @@ MultiText::iterator MultiText::end() {
 }
 
 void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
-    if(KeyboardShortcut::isUndo()) {
-        std::cout << "Undo" << std::endl;
-        applySnapshot(getSnapshot());
-    }
+    History::addEventHandler(window, event);
+//    if(KeyboardShortcut::isUndo() && !History::isEmpty()) {
+//        std::cout << "Undo MultiText, applying" << History::topHistory().snapshot.getString() << std::endl;
+//        applySnapshot(History::topHistory().snapshot);
+//        History::popHistory();
+//    }
 
     if (event.type == sf::Event::TextEntered){
         char input = static_cast<char>(event.text.unicode);
@@ -92,29 +92,25 @@ void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
 void MultiText::update() {
     std::string target = "";
-    bool found;
 
+//    Highlight reserved words
     for (auto w = textList.begin(); w != textList.end(); w++) {
-        found = false;
+        if(w->getString() != ' ' && w->getString() != '\n' && w->getString() != '\t' && w->getString() != '\0') {
 
-        if(w->getString() != ' ') {
             target += w->getString();
-
 
             for (const auto str: reservedWords) {
                 if (str == target) {
-                    found = true;
+
+                    int count = 0;
+
+                    for(auto i = w; i != textList.begin(); i--) {
+                        i->setFillColor(KEYWORD_COLOR);
+                        count++;
+
+                        if(count == str.length()) break;
+                    }
                     break; // Exit the loop early if found
-                }
-            }
-
-            if (found) {
-
-                for(auto i = w; i != textList.begin(); i--) {
-                    i->setFillColor(KEYWORD_COLOR);
-
-                    if(i->getString() == target[0])
-                        break;
                 }
             }
         }
@@ -153,4 +149,11 @@ bool MultiText::empty() {
 
 void MultiText::setLineHeight(const int height) {
     lineHeight = height;
+}
+
+bool MultiText::blankLetter() {
+    if(empty())
+        return false;
+
+    return textList.end()->getString() == '\0' || textList.end()->getString() == '\n' || textList.end()->getString() == '\t';
 }

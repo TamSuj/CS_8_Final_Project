@@ -8,6 +8,7 @@
 #include "GUIComponent.h"
 #include "MultiText.h"
 #include "Cursor.h"
+#include "History.h"
 /*
 A box for the user to type in
 A Cursor  with the following features:
