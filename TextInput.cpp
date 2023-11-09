@@ -7,7 +7,7 @@
 TextInput::TextInput() : TextInput(BOX_DEFAULT_SIZE) { }
 
 TextInput::TextInput(const sf::Vector2f &pos, const sf::Vector2f &size)
-: cursor(sf::milliseconds(200)), box(BOX_DEFAULT_SIZE), text("") {
+: cursor(sf::milliseconds(400)), box(BOX_DEFAULT_SIZE), text("") {
     box.setPosition(pos);
     box.setFillColor(TEXT_BOX_BG_COLOR);
     box.setOutlineColor(TEXT_BOX_OUTLINE_COLOR);
@@ -41,7 +41,8 @@ void TextInput::update() {
 
     if(!text.empty())
         cursor.setPosition({text.getPosition().x + DEFAULT_TEXT_SIZE / 3, text.getPosition().y - 3});
-
+    else
+        cursor.setPosition({box.getPosition().x + DEFAULT_TEXT_SIZE / 3, box.getPosition().y + 7});
 
 
 //    Resize box if text is too long

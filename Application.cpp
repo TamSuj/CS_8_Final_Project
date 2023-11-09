@@ -21,7 +21,7 @@ void Application::run() {
 //    Box box;
 //    Application::addComponent(box);
 
-    DropdownMenu dropdownMenu({5, 5}, {200, 50}, sf::Color::Green);
+//    DropdownMenu dropdownMenu({5, 5}, {200, 50}, sf::Color::Green);
 
     TextInput textInput1({250, 100} , {200, 50});
     TextInput textInput2({250, 200}, {300, 50});
@@ -42,7 +42,7 @@ void Application::run() {
     Application::addComponent(label3);
     Application::addComponent(label4);
 
-    Application::addComponent(dropdownMenu);
+//    Application::addComponent(dropdownMenu);
 
 //    if(MouseEvents<TextInput>::mouseClicked(textInput, window))
 //        std::cout << "mouse clicked" << std::endl;
@@ -56,11 +56,11 @@ void Application::run() {
             for (GUIComponent* &g : components)
                 g->eventHandler(window, event);
 
-            for (GUIComponent* &g : components)
-                g->update();
 
             EventHandler::basicEventHandler(window, event);
         }
+        for (GUIComponent* &g : components)
+            g->update();
 
         window.clear(BG_COLOR);
 

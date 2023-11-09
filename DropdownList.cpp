@@ -1,25 +1,26 @@
 //
-// Created by Tammy S on 10/17/23.
+// Created by Tammy S on 11/9/23.
 //
 
-#include "MultiText.h"
+#include "DropdownList.h"
 
-MultiText::MultiText() : MultiText("") { }
+//dropdown.setSize({size.x, size.y * 2});
+DropdownList::DropdownList() : DropdownList("") { }
 
-MultiText::MultiText(const std::string &message) {
+DropdownList::DropdownList(const std::string &message) {
     push(message);
 }
 
-MultiText::MultiText(const std::string &message, sf::Vector2f pos) {
+DropdownList::DropdownList(const std::string &message, sf::Vector2f pos) {
     push(message);
     setPosition(pos);
 }
 
-void MultiText::setPosition(sf::Vector2f pos) {
+void DropdownList::setPosition(sf::Vector2f pos) {
     position = pos;
 }
 
-void MultiText::push(char text){
+void DropdownList::push(char text){
     if (text == '\n') {
         Letter letter('\0');
         letter.setFillColor(sf::Color::Transparent);
@@ -46,35 +47,35 @@ void MultiText::push(char text){
 
 }
 
-void MultiText::push(const std::string& text){
+void DropdownList::push(const std::string& text){
     for (char x : text){
         push(x);
     }
 }
 
-void MultiText::draw(sf::RenderTarget &window, sf::RenderStates states) const {
+void DropdownList::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     //Glyph, advance
     for (auto w = textList.begin(); w != textList.end(); ++w) {
         window.draw(*w);
     }
 }
 
-void MultiText::clear() {
+void DropdownList::clear() {
     textList.clear();
 }
 
-MultiText::iterator MultiText::begin() {
+DropdownList::iterator DropdownList::begin() {
     return textList.begin();
 }
 
-MultiText::iterator MultiText::end() {
+DropdownList::iterator DropdownList::end() {
     return textList.end();
 }
 
-void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
+void DropdownList::eventHandler(sf::RenderWindow &window, sf::Event event) {
     History::addEventHandler(window, event);
 //    if(KeyboardShortcut::isUndo() && !History::isEmpty()) {
-//        std::cout << "Undo MultiText, applying" << History::topHistory().snapshot.getString() << std::endl;
+//        std::cout << "Undo DropdownList, applying" << History::topHistory().snapshot.getString() << std::endl;
 //        applySnapshot(History::topHistory().snapshot);
 //        History::popHistory();
 //    }
@@ -92,36 +93,12 @@ void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
     }
 }
 
-void MultiText::update() {
+void DropdownList::update() {
     std::string target = "";
 
-//    Highlight reserved words
-    for (auto w = textList.begin(); w != textList.end(); w++) {
-        if(w->getString() != ' ' && w->getString() != '\n' && w->getString() != '\t' && w->getString() != '\0') {
-
-            target += w->getString();
-
-            for (const auto str: reservedWords) {
-                if (str == target) {
-
-                    int count = 0;
-
-                    for(auto i = w; i != textList.begin(); i--) {
-                        i->setFillColor(KEYWORD_COLOR);
-                        count++;
-
-                        if(count == str.length()) break;
-                    }
-                    break; // Exit the loop early if found
-                }
-            }
-        }
-        else
-            target = "";
-    }
 }
 
-Snapshot &MultiText::getSnapshot() {
+Snapshot &DropdownList::getSnapshot() {
     std::string text = "";
     for (auto w = textList.begin(); w != textList.end(); ++w)
         text += w->getString();
@@ -130,30 +107,30 @@ Snapshot &MultiText::getSnapshot() {
     return snapshot;
 }
 
-void MultiText::applySnapshot(const Snapshot &snapshot) {
+void DropdownList::applySnapshot(const Snapshot &snapshot) {
 
 //    Clear the text to replace with a new one
     clear();
     push(snapshot.getString());
 }
 
-sf::Vector2f MultiText::getPosition() {
+sf::Vector2f DropdownList::getPosition() {
     return textList.back().getPosition();
 }
 
-sf::Vector2f MultiText::getPosition() const{
+sf::Vector2f DropdownList::getPosition() const{
     return textList.back().getPosition();
 }
 
-bool MultiText::empty() {
+bool DropdownList::empty() {
     return textList.empty();
 }
 
-void MultiText::setLineHeight(const int height) {
+void DropdownList::setLineHeight(const int height) {
     lineHeight = height;
 }
 
-bool MultiText::blankLetter() {
+bool DropdownList::blankLetter() {
     if(empty())
         return false;
 

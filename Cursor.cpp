@@ -32,13 +32,8 @@ void Cursor::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 }
 
 void Cursor::update() {
-//    if (clock.getElapsedTime() > delay) {
-//        show = !show;
-//        clock.restart();
-//    }
     if (clock.getElapsedTime() > delay) {
         toggleState(HIDDEN);
         clock.restart();
     }
-
 }
