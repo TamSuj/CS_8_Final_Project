@@ -16,22 +16,23 @@ void Application::addComponent(GUIComponent &component) {
 void Application::run() {
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), PROJECT_NAME);
     window.setFramerateLimit(60);
-//    std::string filename = "Output";
-//    filename += ".png";
+    std::string filename = "Screenshot.png";
 //    Box box;
 //    Application::addComponent(box);
 
 //    DropdownMenu dropdownMenu({5, 5}, {200, 50}, sf::Color::Green);
 
 //    TextInput textInput1({250, 100} , {200, 50});
-    DropdownList dateDropdown({"Date", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun" }, {250, 100}, {100, 50});
-    DropdownList yearDropdown({"Year", "2020", "2021", "2022", "2023", "2024", "2025" }, {400, 100}, {100, 50});
+    DropdownList dateDropdown({"Day", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun" }, {250, 100}, {100, 50});
+    DropdownList monthDropdown({"Month", "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" }, {370, 100}, {120, 50});
+    DropdownList yearDropdown({"Year", "2020", "2021", "2022", "2023", "2024", "2025" }, {510, 100}, {100, 50});
     dateDropdown.setColor(sf::Color(255, 189, 3));
+    monthDropdown.setColor(sf::Color(197, 151, 204));
     yearDropdown.setColor(sf::Color(221, 121, 115));
 
     TextInput textInput2({250, 200}, {300, 50});
     TextInput textInput3({250, 300}, {300, 50});
-    TextInput textBox({100, 450}, {600, 150});
+    TextInput textBox({100, 450}, {600, 250});
     Label label1("Date:", {100, 110});
     Label label2("Name:", {100, 210});
     Label label3("Age:", {100, 310});
@@ -43,9 +44,9 @@ void Application::run() {
     DropdownList dropdownList3({"Format", "Font", "Font size", "Line height"}, {dropdownList2.getSize().x * 2, 0}, {150, 50});
     dropdownList3.setColor(sf::Color(85, 194, 218));
 
-    DropdownList randomDropdownList({"Random name", "Kelly", "Sam", "Mark", "Tim", "Matt", "James"}, {570, 200}, {200, 50});
+    DropdownList randomDropdownList({"Sample names", "Kelly", "Sam", "Mark", "Tim", "Matt", "James"}, {570, 200}, {200, 50});
     randomDropdownList.setColor(sf::Color(93, 190, 163));
-    randomDropdownList.disableChangeWhenClicked();
+//    randomDropdownList.disableChangeWhenClicked();
 
 
     //    Application::addComponent(textInput1);
@@ -58,13 +59,14 @@ void Application::run() {
     Application::addComponent(label3);
     Application::addComponent(label4);
 
+    Application::addComponent(randomDropdownList);
     Application::addComponent(dateDropdown);
+    Application::addComponent(monthDropdown);
     Application::addComponent(yearDropdown);
 
     Application::addComponent(dropdownList1);
     Application::addComponent(dropdownList2);
     Application::addComponent(dropdownList3);
-    Application::addComponent(randomDropdownList);
 
 
 
@@ -84,6 +86,7 @@ void Application::run() {
 
 
             EventHandler::basicEventHandler(window, event);
+            EventHandler::screenshot(window, event, filename);
         }
         for (GUIComponent* &g : components)
             g->update();

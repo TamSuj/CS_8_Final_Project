@@ -16,3 +16,15 @@ void EventHandler::basicEventHandler(sf::RenderWindow& window, sf::Event event) 
         //Do something when enter is pressed
     }
 }
+
+void EventHandler::screenshot(sf::RenderWindow &window, sf::Event event, std::string filename) {
+    if(KeyboardShortcut::isSave()) {
+        sf::Texture texture;
+        texture.create(window.getSize().x, window.getSize().y);
+        texture.update(window);
+
+        if (texture.copyToImage().saveToFile("Output/" + filename))
+            std::cout << "screenshot saved to " << filename << std::endl;
+
+    }
+}

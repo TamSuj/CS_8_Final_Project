@@ -42,6 +42,7 @@ public:
     sf::Vector2f getPosition() const;
     void setLineHeight(const int height);
     void setHeader(const std::string &message);
+    void setFontColor(const sf::Color color);
     sf::Vector2f getSize();
 
     void eventHandler(sf::RenderWindow& window, sf::Event event) override;

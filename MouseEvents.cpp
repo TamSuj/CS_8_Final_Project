@@ -15,7 +15,7 @@ bool MouseEvents<T>::mouseClicked(T &object, sf::RenderWindow &window) {
 
 template<class T>
 bool MouseEvents<T>::mouseClicked(sf::RenderWindow &window, sf::Event event) {
-    return event.mouseButton.button == sf::Mouse::Left;
+    return event.type == sf::Event::MouseButtonPressed;
 }
 
 template<class T>

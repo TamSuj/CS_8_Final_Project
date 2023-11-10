@@ -97,7 +97,7 @@ void DropdownList::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
 
                 if(changeWhenClicked && index != 0) {
-                    lists.front() = word;
+                    setHeader(word);
                     toggleState(CLICKED);
                 }
             }
@@ -161,4 +161,8 @@ void DropdownList::setColor(sf::Color color) {
 
 void DropdownList::disableChangeWhenClicked() {
     changeWhenClicked = false;
+}
+
+void DropdownList::setFontColor(const sf::Color color) {
+    header.getText().setColor(color);
 }
