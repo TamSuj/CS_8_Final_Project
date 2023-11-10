@@ -10,7 +10,8 @@
 
 template <typename T>
 class Helper {
-    void static centerText(const T &obj, sf::Text &text);
+public:
+    void static centerText(const T &obj, sf::Text text);
 };
 
 #include "Helper.cpp"

@@ -8,8 +8,18 @@ Box::Box() : Box(BOX_DEFAULT_SIZE){
 
 }
 
-Box::Box(const sf::Vector2f &size) : box(size){
+Box::Box(const sf::Vector2f &size) : Box("", size){
 
+}
+
+Box::Box(const std::string &message, const sf::Vector2f &size) {
+    box.setSize(size);
+    setText(message);
+}
+
+void Box::setText(const std::string &message) {
+    text.setString(message);
+    Helper<sf::RectangleShape>::centerText(box, text.getTextObj());
 }
 
 void Box::setSize(sf::Vector2f size) {
@@ -30,6 +40,7 @@ void Box::setOutlineThickness(const int &thickness) {
 
 void Box::setPosition(const sf::Vector2f &pos) {
     box.setPosition(pos);
+    text.setPosition(pos);
 }
 
 void Box::eventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -53,6 +64,8 @@ void Box::draw(sf::RenderTarget &window, sf::RenderStates states) const{
     if(!checkState(HIDDEN))
         window.draw(box);
 
+    window.draw(text);
+
 }
 
 Snapshot &Box::getSnapshot() {
@@ -62,4 +75,16 @@ Snapshot &Box::getSnapshot() {
 
 void Box::applySnapshot(const Snapshot &snapshot) {
 
+}
+
+sf::Vector2f Box::getPosition() const {
+    return box.getPosition();
+}
+
+sf::Vector2f Box::getSize() const {
+    return box.getSize();
+}
+
+Label Box::getText() const {
+    return text;
 }

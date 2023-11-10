@@ -7,7 +7,7 @@
 #include "Helper.h"
 
 template<typename T>
-void Helper<T>::centerText(const T &obj, sf::Text &text)
+void Helper<T>::centerText(const T &obj, sf::Text text)
 {
     sf::FloatRect textRect = text.getGlobalBounds();
     sf::FloatRect tRect = obj.getGlobalBounds();
@@ -18,6 +18,8 @@ void Helper<T>::centerText(const T &obj, sf::Text &text)
     text.setPosition({tRect.left + tRect.width/2, tRect.top + tRect.height/2});
 }
 
-
-
+/*
+std::cout << "menuArea: " << menuArea.x << " " << menuArea.y << std::endl;
+std::cout << "mousePos: " << mousePos.x << " " << mousePos.y << std::endl;
+*/
 #endif

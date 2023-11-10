@@ -20,6 +20,10 @@ void Label::setString(const std::string &string) {
     text.setString(string);
 }
 
+std::string Label::getString() {
+    return text.getString();
+}
+
 void Label::setPosition(const sf::Vector2f &pos) {
     text.setPosition(pos);
 }
@@ -46,4 +50,8 @@ Snapshot &Label::getSnapshot() {
 
 void Label::applySnapshot(const Snapshot &snapshot) {
 
+}
+
+const sf::Text Label::getTextObj() {
+    return text;
 }

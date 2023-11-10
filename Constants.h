@@ -22,5 +22,7 @@ const sf::Color DARK_BLUE = sf::Color(67, 135, 253);
 const sf::Color KEYWORD_COLOR = sf::Color(156, 103, 232);
 const sf::Color LIGHT_BLUE = sf::Color(96, 152, 247);
 const sf::Vector2f BOX_DEFAULT_SIZE = {200, 50};
+const int MARGIN_LEFT = 15;
+const int MARGIN_TOP = 10;
 
 #endif //SFML_TEMPLATE_CONSTANTS_H
