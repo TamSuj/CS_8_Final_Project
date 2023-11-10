@@ -14,10 +14,14 @@
 #include "Helper.h"
 
 class Box : public GUIComponent {
-sf::RectangleShape box;
-Label text;
+
 
 public:
+
+    sf::RectangleShape box;
+    Label text;
+
+
     Box();
     Box(const sf::Vector2f &size);
     Box(const std::string& message, const sf::Vector2f &size);
@@ -28,6 +32,7 @@ public:
     void setOutlineThickness(const int &thickness);
     void setPosition(const sf::Vector2f& pos);
     void setText(const std::string &message);
+    void setTextPosition(const sf::Vector2f& pos);
 
     sf::Vector2f getPosition() const;
     sf::Vector2f getSize() const;

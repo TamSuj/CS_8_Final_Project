@@ -2,16 +2,16 @@
 // Created by Tammy S on 11/9/23.
 //
 
-#include "DropdownList.h"
+#include "FailedList.h"
 
 //dropdown.setSize({size.x, size.y * 2});
-DropdownList::DropdownList() : DropdownList({"Header", "subset 1", "subset 2" , "subset 3"}, {100, 100}, {0, 0}) { }
+FailedList::FailedList() : FailedList({"Header", "subset 1", "subset 2" , "subset 3"}, {100, 100}, {0, 0}) { }
 
-DropdownList::DropdownList(const std::string &message) {
+FailedList::FailedList(const std::string &message) {
     lists.push_back(message);
 }
 
-DropdownList::DropdownList(const std::vector<std::string> &messageVec, sf::Vector2f pos, sf::Vector2f size) {
+FailedList::FailedList(const std::vector<std::string> &messageVec, sf::Vector2f pos, sf::Vector2f size) {
     for (auto w = messageVec.begin(); w != messageVec.end(); ++w)
         lists.push_back(*w);
 
@@ -19,19 +19,24 @@ DropdownList::DropdownList(const std::vector<std::string> &messageVec, sf::Vecto
     header.setPosition(pos);
     header.setSize(size);
     header.setFillColor(LIGHT_BLUE);
+
+    highlight.setFillColor(sf::Color::Transparent);
+    highlight.setOutlineThickness(3);
+    highlight.setOutlineColor(sf::Color::Red);
+    highlight.setSize({position.x, position.y + lineHeight});
 }
 
-void DropdownList::setPosition(sf::Vector2f pos) {
+void FailedList::setPosition(sf::Vector2f pos) {
     position = pos;
     header.setPosition(pos);
 }
 
-void DropdownList::push(const std::string& text){
+void FailedList::push(const std::string& text){
     lists.push_back(text);
 
 }
 
-void DropdownList::draw(sf::RenderTarget &window, sf::RenderStates states) const {
+void FailedList::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     window.draw(header);
     Box head(lists.front(), {position.x, position.y});
     head.setPosition({position.x + MARGIN_LEFT , position.y + MARGIN_TOP});
@@ -50,6 +55,7 @@ void DropdownList::draw(sf::RenderTarget &window, sf::RenderStates states) const
 
         for (auto w = lists.begin(); w != lists.end(); ++w) {
             Box dropdown(*w, {position.x, position.y + lineHeight * (w - lists.begin())});
+            dropdown.setText(*w);
             dropdown.setPosition(
                     {position.x + MARGIN_LEFT, position.y + lineHeight * (w - lists.begin()) + MARGIN_TOP});
             dropdown.setFillColor(sf::Color::Transparent);
@@ -70,70 +76,56 @@ void DropdownList::draw(sf::RenderTarget &window, sf::RenderStates states) const
 
     }
 
-    if(checkState(HIGHLIGHTED) && checkState(HOVERED))
-        window.draw(highlight);
+//    if(checkState(HOVERED))
+//        window.draw(highlight);
 
 
 
 }
 
-void DropdownList::clear() {
+void FailedList::clear() {
     textList.clear();
 }
 
-void DropdownList::eventHandler(sf::RenderWindow &window, sf::Event event) {
+void FailedList::eventHandler(sf::RenderWindow &window, sf::Event event) {
     History::addEventHandler(window, event);
 
     // Get the mouse position in window coordinates
     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-
-    if(header.getPosition().x <= mousePos.x && mousePos.x <= header.getPosition().x + header.getSize().x &&
-       header.getSize().y <= mousePos.y && mousePos.y <= header.getPosition().y + header.getSize().y + lineHeight * (lists.size()-1)) {
+    if(highlight.box.getGlobalBounds().contains({static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)}))
         enableState(HOVERED);
-        std::cout << "Hoverd" << std::endl;
-    }
     else
         disableState(HOVERED);
 
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+
+
         if(header.getPosition().x <= mousePos.x && mousePos.x <= header.getPosition().x + header.getSize().x &&
-                header.getPosition().y <= mousePos.y && mousePos.y <= header.getPosition().y + header.getSize().y)
+           header.getPosition().y <= mousePos.y && mousePos.y <= header.getPosition().y + header.getSize().y)
             toggleState(CLICKED);
+
 
 
         //    Check if user click on the menu (options)
         if(checkState(CLICKED)){
-
             if(header.getPosition().x <= mousePos.x && mousePos.x <= header.getPosition().x + header.getSize().x && mousePos.y >= header.getPosition().y){
-
-
 //                std::cout << "mousePos: " << mousePos.y << " vs header.pos.y: " << header.getPosition().y << std::endl;
+                int index = (mousePos.y - header.getPosition().y) / lineHeight;
+                std::string word = lists[index];
 
+                if(index != 0)
+                    highlightText = word;
 
                 if(changeWhenClicked && index != 0) {
                     setHeader(word);
                     toggleState(CLICKED);
                 }
             }
-        }
-        }
-        else if(checkState(HOVERED)){
-            int index = (mousePos.y - header.getPosition().y) / lineHeight;
-            std::string word = lists[index];
 
-            if(index != 0){
-                highlight.setSize({header.getSize().x, header.getSize().y});
-                highlight.setPosition({header.getPosition().x, header.getPosition().y + lineHeight * index});
-                highlight.setFillColor(sf::Color::Transparent);
-                highlight.setOutlineColor(sf::Color(125, 125, 125));
-                highlight.setOutlineThickness(3);
-
-                enableState(HIGHLIGHTED);
-            }
         }
-        else
-            disableState(HIGHLIGHTED);
+    }
+
 
 
     if(KeyboardShortcut::isZoomIn()){
@@ -145,15 +137,18 @@ void DropdownList::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
 }
 
-void DropdownList::update() {
+void FailedList::update() {
 //    header.setText(lists.front());
     header.getText().setPosition({header.getText().getPosition().x + MARGIN_LEFT, header.getText().getPosition().y + MARGIN_TOP});
 //    Helper<Box>::centerText(header, header.getText().getTextObj());
 
     menuArea = {header.getSize().x, header.getPosition().y + lineHeight * (lists.size()-1)};
+
+    highlight.setPosition({header.getPosition().x, header.getPosition().y + lineHeight});
+    highlight.setText(highlightText);
 }
 
-Snapshot &DropdownList::getSnapshot() {
+Snapshot &FailedList::getSnapshot() {
     std::string text = "";
     for (auto w = textList.begin(); w != textList.end(); ++w)
         text += w->getString();
@@ -162,45 +157,45 @@ Snapshot &DropdownList::getSnapshot() {
     return snapshot;
 }
 
-void DropdownList::applySnapshot(const Snapshot &snapshot) {
+void FailedList::applySnapshot(const Snapshot &snapshot) {
 
 //    Clear the text to replace with a new one
     clear();
     push(snapshot.getString());
 }
 
-sf::Vector2f DropdownList::getPosition() {
+sf::Vector2f FailedList::getPosition() {
     return header.getPosition();
 }
 
-sf::Vector2f DropdownList::getPosition() const{
+sf::Vector2f FailedList::getPosition() const{
     return getPosition();
 }
 
-bool DropdownList::empty() {
+bool FailedList::empty() {
     return lists.empty();
 }
 
-void DropdownList::setLineHeight(const int height) {
+void FailedList::setLineHeight(const int height) {
     lineHeight = height;
 }
 
-void DropdownList::setHeader(const std::string &message) {
+void FailedList::setHeader(const std::string &message) {
     lists.front() = message;
 }
 
-sf::Vector2f DropdownList::getSize() {
+sf::Vector2f FailedList::getSize() {
     return header.getSize();
 }
 
-void DropdownList::setColor(sf::Color color) {
+void FailedList::setColor(sf::Color color) {
     header.setFillColor(color);
 }
 
-void DropdownList::disableChangeWhenClicked() {
+void FailedList::disableChangeWhenClicked() {
     changeWhenClicked = false;
 }
 
-void DropdownList::setFontColor(const sf::Color color) {
+void FailedList::setFontColor(const sf::Color color) {
     header.getText().setColor(color);
 }

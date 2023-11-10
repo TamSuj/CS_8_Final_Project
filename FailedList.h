@@ -2,8 +2,8 @@
 // Created by Tammy S on 11/9/23.
 //
 
-#ifndef SFML_TEMPLATE_DROPDOWNLIST_H
-#define SFML_TEMPLATE_DROPDOWNLIST_H
+#ifndef SFML_TEMPLATE_FAILEDLIST_H
+#define SFML_TEMPLATE_FAILEDLIST_H
 
 #include "SFML/Graphics.hpp"
 #include <vector>
@@ -17,7 +17,7 @@
 #include "Label.h"
 #include "Helper.h"
 
-class DropdownList : public sf::Text, public GUIComponent {
+class FailedList : public sf::Text, public GUIComponent {
     std::list<Letter> textList;
     sf::Vector2f position = {0,0};
     int lineHeight = 2 * DEFAULT_TEXT_SIZE;
@@ -28,15 +28,15 @@ class DropdownList : public sf::Text, public GUIComponent {
     sf::Vector2f menuArea;
     bool changeWhenClicked = true;
 
-
     Box highlight;
-
+    std::string highlightText;
 public:
-    DropdownList();
-    DropdownList(const std::string &message);
-    DropdownList(const std::vector<std::string> &messageVec, sf::Vector2f pos, sf::Vector2f size);
+
+    FailedList();
+    FailedList(const std::string &message);
+    FailedList(const std::vector<std::string> &messageVec, sf::Vector2f pos, sf::Vector2f size);
     void push(const std::string& text);
-    void draw(sf::RenderTarget& window, sf::RenderStates states) const;
+    void draw(sf::RenderTarget& window, sf::RenderStates states) const override;
     void clear();
     void setPosition(sf::Vector2f pos);
     void setColor(sf::Color color);
@@ -57,4 +57,4 @@ public:
 };
 
 
-#endif //SFML_TEMPLATE_DROPDOWNLIST_H
+#endif //SFML_TEMPLATE_FAILEDLIST_H

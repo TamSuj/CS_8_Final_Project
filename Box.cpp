@@ -54,10 +54,18 @@ void Box::eventHandler(sf::RenderWindow &window, sf::Event event) {
 }
 
 void Box::update() {
-    if(checkState(HOVERED))
-        box.setFillColor(LIGHT_BLUE); //Light blue
-    else
-        box.setFillColor(DARK_BLUE); //Dark blue
+    if(checkState(HOVERED)) {
+//        box.setFillColor(LIGHT_BLUE); //Light blue
+        setOutlineThickness(3);
+        setOutlineColor(sf::Color(181, 181, 181));
+        }
+    else {
+//        box.setFillColor(DARK_BLUE); //Dark blue
+        setOutlineThickness(0);
+    }
+
+//    Put text in the middle of the box
+    Helper<sf::RectangleShape>::centerText(box, text.getTextObj());
 }
 
 void Box::draw(sf::RenderTarget &window, sf::RenderStates states) const{
@@ -87,4 +95,8 @@ sf::Vector2f Box::getSize() const {
 
 Label Box::getText() const {
     return text;
+}
+
+void Box::setTextPosition(const sf::Vector2f &pos) {
+    text.setPosition(pos);
 }
