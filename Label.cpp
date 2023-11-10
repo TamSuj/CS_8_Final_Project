@@ -36,8 +36,16 @@ void Label::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     window.draw(text);
 }
 
+int Label::getFontSize() {
+    return text.getCharacterSize();
+}
+
 void Label::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
+    if(KeyboardShortcut::isZoomIn())
+        text.setCharacterSize(getFontSize() + 2);
+    else if(KeyboardShortcut::isZoomOut())
+        text.setCharacterSize(getFontSize() - 2);
 }
 
 void Label::update() {
@@ -54,4 +62,8 @@ void Label::applySnapshot(const Snapshot &snapshot) {
 
 const sf::Text Label::getTextObj() {
     return text;
+}
+
+void Label::setFontSize(const int size) {
+    text.setCharacterSize(size);
 }

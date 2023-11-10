@@ -28,6 +28,9 @@ class DropdownList : public sf::Text, public GUIComponent {
     sf::Vector2f menuArea;
     bool changeWhenClicked = true;
 
+
+    Box highlight;
+
 public:
     DropdownList();
     DropdownList(const std::string &message);

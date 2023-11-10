@@ -90,6 +90,21 @@ void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
             push(input);
 
     }
+
+    if(KeyboardShortcut::isZoomIn()){
+        for(auto w = textList.begin(); w != textList.end(); ++w){
+            w->setCharacterSize(w->getCharacterSize() + 2);
+            //Set the space between each character properly or else it will be crowded together
+            w->setPosition(w->getPosition().x + 4, w->getPosition().y);
+
+        }
+    }
+    else if(KeyboardShortcut::isZoomOut()){
+        for(auto w = textList.begin(); w != textList.end(); ++w){
+            w->setCharacterSize(w->getCharacterSize() - 2);
+            w->setPosition(w->getPosition().x - 2, w->getPosition().y);
+        }
+    }
 }
 
 void MultiText::update() {

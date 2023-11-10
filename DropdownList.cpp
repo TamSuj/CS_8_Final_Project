@@ -67,7 +67,13 @@ void DropdownList::draw(sf::RenderTarget &window, sf::RenderStates states) const
 //
 //            }
         }
+
     }
+
+    if(checkState(HIGHLIGHTED) && checkState(HOVERED))
+        window.draw(highlight);
+
+
 
 }
 
@@ -78,22 +84,31 @@ void DropdownList::clear() {
 void DropdownList::eventHandler(sf::RenderWindow &window, sf::Event event) {
     History::addEventHandler(window, event);
 
-    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-        // Get the mouse position in window coordinates
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+    // Get the mouse position in window coordinates
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
+
+    if(header.getPosition().x <= mousePos.x && mousePos.x <= header.getPosition().x + header.getSize().x &&
+       header.getSize().y <= mousePos.y && mousePos.y <= header.getPosition().y + header.getSize().y + lineHeight * (lists.size()-1)) {
+        enableState(HOVERED);
+        std::cout << "Hoverd" << std::endl;
+    }
+    else
+        disableState(HOVERED);
+
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
         if(header.getPosition().x <= mousePos.x && mousePos.x <= header.getPosition().x + header.getSize().x &&
                 header.getPosition().y <= mousePos.y && mousePos.y <= header.getPosition().y + header.getSize().y)
             toggleState(CLICKED);
 
 
-
         //    Check if user click on the menu (options)
         if(checkState(CLICKED)){
+
             if(header.getPosition().x <= mousePos.x && mousePos.x <= header.getPosition().x + header.getSize().x && mousePos.y >= header.getPosition().y){
+
+
 //                std::cout << "mousePos: " << mousePos.y << " vs header.pos.y: " << header.getPosition().y << std::endl;
-                int index = (mousePos.y - header.getPosition().y) / lineHeight;
-                std::string word = lists[index];
 
 
                 if(changeWhenClicked && index != 0) {
@@ -101,8 +116,31 @@ void DropdownList::eventHandler(sf::RenderWindow &window, sf::Event event) {
                     toggleState(CLICKED);
                 }
             }
-
         }
+        }
+        else if(checkState(HOVERED)){
+            int index = (mousePos.y - header.getPosition().y) / lineHeight;
+            std::string word = lists[index];
+
+            if(index != 0){
+                highlight.setSize({header.getSize().x, header.getSize().y});
+                highlight.setPosition({header.getPosition().x, header.getPosition().y + lineHeight * index});
+                highlight.setFillColor(sf::Color::Transparent);
+                highlight.setOutlineColor(sf::Color(125, 125, 125));
+                highlight.setOutlineThickness(3);
+
+                enableState(HIGHLIGHTED);
+            }
+        }
+        else
+            disableState(HIGHLIGHTED);
+
+
+    if(KeyboardShortcut::isZoomIn()){
+        header.getText().setFontSize(header.getText().getFontSize() + 2);
+
+    }else if(KeyboardShortcut::isZoomOut()){
+        header.getText().setFontSize(header.getText().getFontSize() - 2);
     }
 
 }

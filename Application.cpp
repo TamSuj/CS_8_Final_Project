@@ -46,8 +46,7 @@ void Application::run() {
 
     DropdownList randomDropdownList({"Sample names", "Kelly", "Sam", "Mark", "Tim", "Matt", "James"}, {570, 200}, {200, 50});
     randomDropdownList.setColor(sf::Color(93, 190, 163));
-//    randomDropdownList.disableChangeWhenClicked();
-
+    randomDropdownList.disableChangeWhenClicked();
 
     //    Application::addComponent(textInput1);
     Application::addComponent(textInput2);
@@ -67,8 +66,6 @@ void Application::run() {
     Application::addComponent(dropdownList1);
     Application::addComponent(dropdownList2);
     Application::addComponent(dropdownList3);
-
-
 
 //    Application::addComponent(dropdownMenu);
 

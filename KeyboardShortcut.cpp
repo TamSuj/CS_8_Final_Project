@@ -32,3 +32,15 @@ bool KeyboardShortcut::isEnter() {
     //check enter button is pressed
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
 }
+
+bool KeyboardShortcut::isZoomIn() {
+    //check if command + is pressed
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::LSystem) || sf::Keyboard::isKeyPressed(sf::Keyboard::RSystem))
+           && sf::Keyboard::isKeyPressed(sf::Keyboard::Equal);
+}
+
+bool KeyboardShortcut::isZoomOut() {
+    //check if command - is pressed
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::LSystem) || sf::Keyboard::isKeyPressed(sf::Keyboard::RSystem))
+           && sf::Keyboard::isKeyPressed(sf::Keyboard::Dash);
+}

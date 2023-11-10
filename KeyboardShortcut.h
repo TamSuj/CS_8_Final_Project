@@ -15,6 +15,8 @@ public:
     static bool isSave();
     static bool isSelectAll();
     static bool isEnter();
+    static bool isZoomIn();
+    static bool isZoomOut();
 };
 
 

@@ -11,7 +11,6 @@
 
 class EventHandler {
 public:
-    EventHandler();
     static void basicEventHandler(sf::RenderWindow& window, sf::Event event);
     static void screenshot(sf::RenderWindow& window, sf::Event event, std::string filename);
 /*

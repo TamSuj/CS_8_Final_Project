@@ -9,6 +9,7 @@
 #include "GUIComponent.h"
 #include "Constants.h"
 #include "Font.h"
+#include "KeyboardShortcut.h"
 
 class Label : public GUIComponent{
     sf::Text text;
@@ -19,6 +20,9 @@ public:
     std::string getString();
     void setPosition(const sf::Vector2f& pos);
     void setColor(const sf::Color color);
+    void setFontSize(const int size);
+
+    int getFontSize();
 
     void draw(sf::RenderTarget& window, sf::RenderStates states) const;
     void eventHandler(sf::RenderWindow& window, sf::Event event);
