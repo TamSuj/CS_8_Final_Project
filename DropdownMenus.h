@@ -8,6 +8,7 @@
 #include "GUIComponent.h"
 #include "Constants.h"
 #include "Box.h"
+#include "History.h"
 
 class DropdownMenus : public GUIComponent{
     std::vector<std::string> lists;
@@ -20,7 +21,7 @@ class DropdownMenus : public GUIComponent{
     bool changeWhenClicked = true;
     sf::Color highlightColor = sf::Color(199, 199, 199);
 public:
-    DropdownMenus(const std::string &message, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
+    DropdownMenus(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
     DropdownMenus(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
 
     void setPosition(sf::Vector2f pos);

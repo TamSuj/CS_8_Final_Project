@@ -86,6 +86,7 @@ void Application::run() {
 
             EventHandler::basicEventHandler(window, event);
             EventHandler::screenshot(window, event, filename);
+            History::addEventHandler(window, event);
         }
         for (GUIComponent* &g : components)
             g->update();

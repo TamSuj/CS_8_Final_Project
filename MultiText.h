@@ -28,7 +28,7 @@ public:
     MultiText(const std::string &message, sf::Vector2f pos);
     void push(char text);
     void push(const std::string& text);
-    void draw(sf::RenderTarget& window, sf::RenderStates states) const;
+    void draw(sf::RenderTarget& window, sf::RenderStates states) const override;
     void clear();
     void setPosition(sf::Vector2f pos);
     bool empty();

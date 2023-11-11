@@ -39,6 +39,7 @@ void MultiText::push(char text){
             letter.setPosition(textList.back().getPosition().x + g.advance, textList.back().getPosition().y);
             textList.push_back(letter);
         }
+
     }
 
     if(text == ' ' || text == '\n' || text == '\t' || text == '\0')
@@ -72,12 +73,6 @@ MultiText::iterator MultiText::end() {
 }
 
 void MultiText::eventHandler(sf::RenderWindow &window, sf::Event event) {
-    History::addEventHandler(window, event);
-//    if(KeyboardShortcut::isUndo() && !History::isEmpty()) {
-//        std::cout << "Undo MultiText, applying" << History::topHistory().snapshot.getString() << std::endl;
-//        applySnapshot(History::topHistory().snapshot);
-//        History::popHistory();
-//    }
 
     if (event.type == sf::Event::TextEntered){
         char input = static_cast<char>(event.text.unicode);
@@ -138,8 +133,10 @@ void MultiText::update() {
 
 Snapshot &MultiText::getSnapshot() {
     std::string text = "";
-    for (auto w = textList.begin(); w != textList.end(); ++w)
+
+    for (auto w = textList.begin(); w != textList.end(); w++)
         text += w->getString();
+
 
     Snapshot snapshot(text);
     return snapshot;
@@ -149,6 +146,7 @@ void MultiText::applySnapshot(const Snapshot &snapshot) {
 
 //    Clear the text to replace with a new one
     clear();
+
     push(snapshot.getString());
 }
 

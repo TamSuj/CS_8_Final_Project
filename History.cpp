@@ -8,6 +8,7 @@ std::stack<HistoryNode> History::stack;
 
 void History::pushHistory(const HistoryNode &snapshot) {
     stack.push(snapshot);
+//    std::cout << "pushed: " << stack.top().snapshot.getString() << std::endl;
 }
 
 HistoryNode& History::createHistoryNode(const Snapshot &snapshot, GUIComponent *component) {
@@ -36,13 +37,10 @@ Snapshot History::top() {
 }
 
 void History::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if (KeyboardShortcut::isUndo()) {
-        if (!stack.empty()) {
-            HistoryNode top = topHistory();
-            std::cout << "Undo, applying " << top.snapshot.getString() << std::endl;
-            topHistory().component->applySnapshot(top.snapshot);
-            popHistory();
-        }
+    if (KeyboardShortcut::isUndo() && !isEmpty()) {
+//        std::cout << "Undo, applying " << top().getString() << std::endl;
+        topHistory().component->applySnapshot(topHistory().snapshot);
+        popHistory();
     }
 
 }
@@ -53,5 +51,12 @@ void History::clearHistory() {
 }
 
 void History::push(Snapshot& snapshot, GUIComponent* component) {
-    History::pushHistory(History::createHistoryNode(snapshot, component));
+    std::string s = snapshot.getString();
+    Snapshot snapshot2(s);
+//    std::cout << "pushed received: " << snapshot2.getString() << std::endl;
+
+
+    HistoryNode n = createHistoryNode(snapshot2, component);
+
+    History::pushHistory(n);
 }

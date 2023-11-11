@@ -4,9 +4,9 @@
 
 #include "DropdownMenus.h"
 
-DropdownMenus::DropdownMenus(const std::string &message, sf::Vector2f pos, sf::Vector2f size, sf::Color color, bool changeWhenClicked) {
+DropdownMenus::DropdownMenus(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color, bool changeWhenClicked) {
     std::vector<std::string> temp;
-    temp.push_back(message);
+    temp.push_back(text);
 
     DropdownMenus(temp, pos, size, color, changeWhenClicked);
 }
@@ -55,7 +55,6 @@ void DropdownMenus::setSize(sf::Vector2f size) {
 
 void DropdownMenus::setHeader(const std::string &message) {
     box.setText(message);
-    lists[0] = message;
 }
 
 void DropdownMenus::setColor(sf::Color color) {
@@ -75,6 +74,7 @@ sf::Vector2f DropdownMenus::getSize() {
 }
 
 void DropdownMenus::eventHandler(sf::RenderWindow &window, sf::Event event) {
+
     //If mouse is in the bound of the box, enable hovered state
     sf::Vector2f mpos = (sf::Vector2f) sf::Mouse::getPosition(window);
 
@@ -97,6 +97,9 @@ void DropdownMenus::eventHandler(sf::RenderWindow &window, sf::Event event) {
                 i->setFillColor(highlightColor);
 
                 if(event.type == sf::Event::MouseButtonPressed && changeWhenClicked) {
+//                    Send the header text to history stack before making changes
+                    History::push(getSnapshot(), this);
+
                     setHeader(choice);
                     toggleState(CLICKED);
                 }
@@ -104,10 +107,7 @@ void DropdownMenus::eventHandler(sf::RenderWindow &window, sf::Event event) {
             }else
                 i->setFillColor(sf::Color::White);
 
-            // DELETE ME - Close window when user click on "Close"
-            if(lists.front() == "Close") {
-                window.close();
-            }
+
 
         }
     }
@@ -138,17 +138,17 @@ void DropdownMenus::update() {
 //        box.setOutlineThickness(0);
 //    }
 
-
-
+    //Center text
 }
 
 Snapshot &DropdownMenus::getSnapshot() {
-    Snapshot snapshot("DropdownMenus");
+    Snapshot snapshot(box.getText().getString());
     return snapshot;
 }
 
 void DropdownMenus::applySnapshot(const Snapshot &snapshot) {
-
+//    std::cout << "applying " << snapshot.getString() << std::endl;
+    setHeader(snapshot.getString());
 }
 
 void DropdownMenus::disableChangeWhenClicked() {
