@@ -12,3 +12,7 @@ Letter::Letter(char letter) : sf::Text() {
     setCharacterSize(DEFAULT_TEXT_SIZE);
     setFillColor(DEFAULT_TEXT_COLOR);
 }
+
+std::string Letter::getChar() {
+    return getString();
+}

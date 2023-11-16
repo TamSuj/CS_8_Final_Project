@@ -76,7 +76,7 @@ void Box::draw(sf::RenderTarget &window, sf::RenderStates states) const{
 
 }
 
-Snapshot &Box::getSnapshot() {
+Snapshot Box::getSnapshot() {
     Snapshot snapshot("Box");
     return snapshot;
 }
@@ -99,4 +99,9 @@ Label Box::getText() const {
 
 void Box::setTextPosition(const sf::Vector2f &pos) {
     text.setPosition(pos);
+    Helper<sf::RectangleShape>::centerText(box, text.getTextObj());
+}
+
+std::string Box::getTextString() const {
+    return getText().getString();
 }

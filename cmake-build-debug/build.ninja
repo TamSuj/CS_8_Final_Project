@@ -123,13 +123,6 @@ build CMakeFiles/SFML_Template.dir/Snapshot.cpp.o: CXX_COMPILER__SFML_Template_D
   OBJECT_DIR = CMakeFiles/SFML_Template.dir
   OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
 
-build CMakeFiles/SFML_Template.dir/SnapshotInterface.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/SnapshotInterface.cpp || cmake_object_order_depends_target_SFML_Template
-  DEP_FILE = CMakeFiles/SFML_Template.dir/SnapshotInterface.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -isystem /opt/homebrew/include
-  OBJECT_DIR = CMakeFiles/SFML_Template.dir
-  OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
-
 build CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/KeyboardShortcut.cpp || cmake_object_order_depends_target_SFML_Template
   DEP_FILE = CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
@@ -200,15 +193,15 @@ build CMakeFiles/SFML_Template.dir/DropdownMenus.cpp.o: CXX_COMPILER__SFML_Templ
   OBJECT_DIR = CMakeFiles/SFML_Template.dir
   OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
 
-build CMakeFiles/SFML_Template.dir/Item.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/Item.cpp || cmake_object_order_depends_target_SFML_Template
-  DEP_FILE = CMakeFiles/SFML_Template.dir/Item.cpp.o.d
+build CMakeFiles/SFML_Template.dir/HowToUse.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/HowToUse.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/HowToUse.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
   INCLUDES = -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/SFML_Template.dir
   OBJECT_FILE_DIR = CMakeFiles/SFML_Template.dir
 
-build CMakeFiles/SFML_Template.dir/ItemList.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/ItemList.cpp || cmake_object_order_depends_target_SFML_Template
-  DEP_FILE = CMakeFiles/SFML_Template.dir/ItemList.cpp.o.d
+build CMakeFiles/SFML_Template.dir/MenuBar.cpp.o: CXX_COMPILER__SFML_Template_Debug /Users/tammy/CLionProjects/FinalProject/MenuBar.cpp || cmake_object_order_depends_target_SFML_Template
+  DEP_FILE = CMakeFiles/SFML_Template.dir/MenuBar.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -fcolor-diagnostics -std=gnu++17
   INCLUDES = -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/SFML_Template.dir
@@ -222,7 +215,7 @@ build CMakeFiles/SFML_Template.dir/ItemList.cpp.o: CXX_COMPILER__SFML_Template_D
 #############################################
 # Link the executable SFML_Template
 
-build SFML_Template: CXX_EXECUTABLE_LINKER__SFML_Template_Debug CMakeFiles/SFML_Template.dir/main.cpp.o CMakeFiles/SFML_Template.dir/MultiText.cpp.o CMakeFiles/SFML_Template.dir/Letter.cpp.o CMakeFiles/SFML_Template.dir/Application.cpp.o CMakeFiles/SFML_Template.dir/Font.cpp.o CMakeFiles/SFML_Template.dir/Box.cpp.o CMakeFiles/SFML_Template.dir/States.cpp.o CMakeFiles/SFML_Template.dir/GUIComponent.cpp.o CMakeFiles/SFML_Template.dir/EventHandler.cpp.o CMakeFiles/SFML_Template.dir/Helper.cpp.o CMakeFiles/SFML_Template.dir/Snapshot.cpp.o CMakeFiles/SFML_Template.dir/SnapshotInterface.cpp.o CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o CMakeFiles/SFML_Template.dir/MouseEvents.cpp.o CMakeFiles/SFML_Template.dir/History.cpp.o CMakeFiles/SFML_Template.dir/TextInput.cpp.o CMakeFiles/SFML_Template.dir/Cursor.cpp.o CMakeFiles/SFML_Template.dir/Label.cpp.o CMakeFiles/SFML_Template.dir/Heap.cpp.o CMakeFiles/SFML_Template.dir/WordSort.cpp.o CMakeFiles/SFML_Template.dir/FailedList.cpp.o CMakeFiles/SFML_Template.dir/DropdownMenus.cpp.o CMakeFiles/SFML_Template.dir/Item.cpp.o CMakeFiles/SFML_Template.dir/ItemList.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
+build SFML_Template: CXX_EXECUTABLE_LINKER__SFML_Template_Debug CMakeFiles/SFML_Template.dir/main.cpp.o CMakeFiles/SFML_Template.dir/MultiText.cpp.o CMakeFiles/SFML_Template.dir/Letter.cpp.o CMakeFiles/SFML_Template.dir/Application.cpp.o CMakeFiles/SFML_Template.dir/Font.cpp.o CMakeFiles/SFML_Template.dir/Box.cpp.o CMakeFiles/SFML_Template.dir/States.cpp.o CMakeFiles/SFML_Template.dir/GUIComponent.cpp.o CMakeFiles/SFML_Template.dir/EventHandler.cpp.o CMakeFiles/SFML_Template.dir/Helper.cpp.o CMakeFiles/SFML_Template.dir/Snapshot.cpp.o CMakeFiles/SFML_Template.dir/KeyboardShortcut.cpp.o CMakeFiles/SFML_Template.dir/MouseEvents.cpp.o CMakeFiles/SFML_Template.dir/History.cpp.o CMakeFiles/SFML_Template.dir/TextInput.cpp.o CMakeFiles/SFML_Template.dir/Cursor.cpp.o CMakeFiles/SFML_Template.dir/Label.cpp.o CMakeFiles/SFML_Template.dir/Heap.cpp.o CMakeFiles/SFML_Template.dir/WordSort.cpp.o CMakeFiles/SFML_Template.dir/FailedList.cpp.o CMakeFiles/SFML_Template.dir/DropdownMenus.cpp.o CMakeFiles/SFML_Template.dir/HowToUse.cpp.o CMakeFiles/SFML_Template.dir/MenuBar.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib /opt/homebrew/lib/libsfml-audio.2.6.0.dylib /opt/homebrew/lib/libsfml-window.2.6.0.dylib /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib  /opt/homebrew/lib/libsfml-audio.2.6.0.dylib  /opt/homebrew/lib/libsfml-window.2.6.0.dylib  /opt/homebrew/lib/libsfml-system.2.6.0.dylib
   OBJECT_DIR = CMakeFiles/SFML_Template.dir

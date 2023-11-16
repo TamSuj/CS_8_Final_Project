@@ -12,8 +12,9 @@ class Snapshot {
     std::string snapshot;
 public:
     Snapshot();
-    Snapshot(std::string message);
+    Snapshot(const std::string& message);
     std::string getString() const;
+    void setString(std::string message);
 };
 
 

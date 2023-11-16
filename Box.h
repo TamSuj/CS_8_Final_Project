@@ -14,13 +14,9 @@
 #include "Helper.h"
 
 class Box : public GUIComponent {
-
-
 public:
-
     sf::RectangleShape box;
     Label text;
-
 
     Box();
     Box(const sf::Vector2f &size);
@@ -37,6 +33,7 @@ public:
     sf::Vector2f getPosition() const;
     sf::Vector2f getSize() const;
     Label getText() const;
+    std::string getTextString() const;
 
 //    Event handler
     void eventHandler(sf::RenderWindow& window, sf::Event event);
@@ -44,7 +41,7 @@ public:
     void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 
     // this function will return a snapshot of the object's current state
-    Snapshot& getSnapshot();
+    Snapshot getSnapshot();
 
     // this function will apply a snapshot to the object.
     //This will revert the object back to the state that has been recorded in the snapshot

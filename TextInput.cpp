@@ -18,9 +18,13 @@ TextInput::TextInput(const sf::Vector2f &pos, const sf::Vector2f &size)
 }
 
 void TextInput::eventHandler(sf::RenderWindow &window, sf::Event event) {
-    if(checkState(CLICKED))
+    if(checkState(CLICKED)) {
         text.eventHandler(window, event);
 
+        if (sf::Event::TextEntered == event.type) {
+            History::push(getSnapshot(), this);
+        }
+    }
     sf::Vector2f mpos = (sf::Vector2f) sf::Mouse::getPosition(window);
     if(box.getGlobalBounds().contains(mpos)) {
         if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
@@ -81,12 +85,14 @@ void TextInput::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     text.draw(window, states);
 }
 
-Snapshot &TextInput::getSnapshot() {
+Snapshot TextInput::getSnapshot() {
     Snapshot snapshot(text.getString());
+    std::cout << " text input snapshot: " << snapshot.getString() << std::endl;
     return snapshot;
 }
 
 void TextInput::applySnapshot(const Snapshot &snapshot) {
+    std::cout << "applying snapshot" << snapshot.getString() << std::endl;
     text.setString(snapshot.getString());
 }
 

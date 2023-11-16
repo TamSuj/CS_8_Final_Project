@@ -1,16 +1,16 @@
 //
-// Created by Tammy S on 11/10/23.
+// Created by Tammy S on 11/14/23.
 //
 
-#ifndef SFML_TEMPLATE_DROPDOWNMENUS_H
-#define SFML_TEMPLATE_DROPDOWNMENUS_H
+#ifndef SFML_TEMPLATE_MENUBAR_H
+#define SFML_TEMPLATE_MENUBAR_H
 
 #include "GUIComponent.h"
 #include "Constants.h"
 #include "Box.h"
 #include "History.h"
 
-class DropdownMenus : public GUIComponent{
+class MenuBar : public GUIComponent{
     std::vector<std::string> lists;
     sf::Vector2f position = {0,0};
     sf::Vector2f size;
@@ -18,11 +18,11 @@ class DropdownMenus : public GUIComponent{
     Box box;
     std::vector<Box*> dropdowns;
 
-    bool changeWhenClicked = true;
     sf::Color highlightColor = sf::Color(199, 199, 199);
+
 public:
-    DropdownMenus(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
-    DropdownMenus(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
+    MenuBar(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE);
+    MenuBar(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE);
 
     void setPosition(sf::Vector2f pos);
     void setSize(sf::Vector2f size);
@@ -39,9 +39,7 @@ public:
     Snapshot getSnapshot();
     void applySnapshot(const Snapshot& snapshot);
 
-    void disableChangeWhenClicked();
-    void enableChangeWhenClicked();
 };
 
 
-#endif //SFML_TEMPLATE_DROPDOWNMENUS_H
+#endif //SFML_TEMPLATE_MENUBAR_H

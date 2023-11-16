@@ -13,6 +13,8 @@ class Letter : public sf::Text{
 public:
     Letter();
     Letter(char letter);
+
+    std::string getChar();
 };
 
 

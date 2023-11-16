@@ -52,7 +52,7 @@ void Label::update() {
 
 }
 
-Snapshot &Label::getSnapshot() {
+Snapshot Label::getSnapshot() {
 
 }
 

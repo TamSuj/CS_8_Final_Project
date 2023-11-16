@@ -51,7 +51,7 @@ public:
     void eventHandler(sf::RenderWindow& window, sf::Event event) override;
     void update() override; //Call in every iteration
 
-    Snapshot& getSnapshot() override;
+    Snapshot getSnapshot() override;
     void applySnapshot(const Snapshot& snapshot) override;
     void disableChangeWhenClicked();
 };

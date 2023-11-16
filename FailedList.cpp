@@ -148,7 +148,7 @@ void FailedList::update() {
     highlight.setText(highlightText);
 }
 
-Snapshot &FailedList::getSnapshot() {
+Snapshot FailedList::getSnapshot() {
     std::string text = "";
     for (auto w = textList.begin(); w != textList.end(); ++w)
         text += w->getString();

@@ -34,7 +34,9 @@ public:
     bool empty();
     sf::Vector2f getPosition();
     sf::Vector2f getPosition() const;
+    std::string getString();
     void setLineHeight(const int height);
+    void setString(const std::string& string);
 
     typedef std::list<Letter>::iterator iterator;
 
@@ -44,7 +46,7 @@ public:
     void eventHandler(sf::RenderWindow& window, sf::Event event) override;
     void update() override; //Call in every iteration
 
-    Snapshot& getSnapshot() override;
+    Snapshot getSnapshot() override;
     void applySnapshot(const Snapshot& snapshot) override;
 
     bool blankLetter();

@@ -13,7 +13,7 @@ class GUIComponent : public sf::Sprite, public States, public SnapshotInterface{
 public:
     virtual void eventHandler(sf::RenderWindow& window, sf::Event event) = 0;
     virtual void update() = 0; //Call in every iteration
-    virtual Snapshot& getSnapshot() = 0;
+    virtual Snapshot getSnapshot() = 0;
     virtual void applySnapshot(const Snapshot& snapshot) = 0;
 };
 

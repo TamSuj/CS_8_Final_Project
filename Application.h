@@ -18,6 +18,8 @@
 #include "MouseEvents.h"
 
 #include "DropdownMenus.h"
+#include "HowToUse.h"
+#include "MenuBar.h"
 
 class Application {
     static std::vector<GUIComponent*> components;

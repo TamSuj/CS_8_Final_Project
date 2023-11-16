@@ -1,23 +1,22 @@
 //
-// Created by Tammy S on 11/10/23.
+// Created by Tammy S on 11/14/23.
 //
 
-#include "DropdownMenus.h"
+#include "MenuBar.h"
 
-DropdownMenus::DropdownMenus(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color, bool changeWhenClicked) {
+MenuBar::MenuBar(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color) {
     std::vector<std::string> temp;
     temp.push_back(text);
 
-    DropdownMenus(temp, pos, size, color, changeWhenClicked);
+    MenuBar(temp, pos, size, color);
 }
 
-DropdownMenus::DropdownMenus(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color, bool changeWhenClicked) {
+MenuBar::MenuBar(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color) {
     for(auto x : message)
         lists.push_back(x);
 
     setPosition(pos);
     setSize(size);
-    this->changeWhenClicked = changeWhenClicked;
 
 //  Init header (box)
     if(!lists.empty())
@@ -38,7 +37,7 @@ DropdownMenus::DropdownMenus(const std::vector<std::string> message, sf::Vector2
 
 }
 
-void DropdownMenus::setPosition(sf::Vector2f pos) {
+void MenuBar::setPosition(sf::Vector2f pos) {
     position = pos;
     box.setPosition(pos);
     box.setTextPosition({pos.x + MARGIN_LEFT, pos.y + MARGIN_TOP});
@@ -49,31 +48,31 @@ void DropdownMenus::setPosition(sf::Vector2f pos) {
     }
 }
 
-void DropdownMenus::setSize(sf::Vector2f size) {
+void MenuBar::setSize(sf::Vector2f size) {
     this->size = size;
 }
 
-void DropdownMenus::setHeader(const std::string &message) {
+void MenuBar::setHeader(const std::string &message) {
     box.setText(message);
 }
 
-void DropdownMenus::setColor(sf::Color color) {
+void MenuBar::setColor(sf::Color color) {
     box.setFillColor(color);
 }
 
-void DropdownMenus::setHighlightColor(sf::Color color) {
+void MenuBar::setHighlightColor(sf::Color color) {
     highlightColor = color;
 }
 
-sf::Vector2f DropdownMenus::getPosition() {
+sf::Vector2f MenuBar::getPosition() {
     return position;
 }
 
-sf::Vector2f DropdownMenus::getSize() {
+sf::Vector2f MenuBar::getSize() {
     return size;
 }
 
-void DropdownMenus::eventHandler(sf::RenderWindow &window, sf::Event event) {
+void MenuBar::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
     //If mouse is in the bound of the box, enable hovered state
     sf::Vector2f mpos = (sf::Vector2f) sf::Mouse::getPosition(window);
@@ -96,14 +95,17 @@ void DropdownMenus::eventHandler(sf::RenderWindow &window, sf::Event event) {
                 std::string selectedText = i->getTextString();
                 i->setFillColor(highlightColor);
 
-                if(event.type == sf::Event::MouseButtonPressed && changeWhenClicked) {
-//                    Send the header text to history stack before making changes
-                    History::push(getSnapshot(), this);
+//                if(event.type == sf::Event::MouseButtonPressed && changeWhenClicked) {
+////                    Send the header text to history stack before making changes
+//                    History::push(getSnapshot(), this);
+//
+//                    setHeader(selectedText);
+//                    toggleState(CLICKED);
+//                }
 
-                    setHeader(selectedText);
+                if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                     toggleState(CLICKED);
                 }
-
             }else
                 i->setFillColor(sf::Color::White);
 
@@ -112,12 +114,12 @@ void DropdownMenus::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
 
 
-//    If mpos isout of the area of the DropdownMenus (header + dropdown area), disable clicked state
+//    If mpos isout of the area of the MenuBar (header + dropdown area), disable clicked state
 //    if(!(box.getGlobalBounds().contains(mpos) || dropdowns.back()->getGlobalBounds().contains(mpos)))
 //        disableState(CLICKED);
 }
 
-void DropdownMenus::draw(sf::RenderTarget &window, sf::RenderStates states) const {
+void MenuBar::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     if(checkState(CLICKED)) {
         for (auto x: dropdowns) {
             window.draw(*x);
@@ -127,7 +129,7 @@ void DropdownMenus::draw(sf::RenderTarget &window, sf::RenderStates states) cons
     window.draw(box);
 }
 
-void DropdownMenus::update() {
+void MenuBar::update() {
 //    if(checkState(HOVERED)) {
 //        box.setOutlineThickness(3);
 //        box.setOutlineColor(sf::Color::White);
@@ -139,20 +141,13 @@ void DropdownMenus::update() {
     //Center text
 }
 
-Snapshot DropdownMenus::getSnapshot() {
+Snapshot MenuBar::getSnapshot() {
     Snapshot snapshot(box.getText().getString());
     return snapshot;
 }
 
-void DropdownMenus::applySnapshot(const Snapshot &snapshot) {
+void MenuBar::applySnapshot(const Snapshot &snapshot) {
 //    std::cout << "applying " << snapshot.getString() << std::endl;
     setHeader(snapshot.getString());
 }
 
-void DropdownMenus::disableChangeWhenClicked() {
-    changeWhenClicked = false;
-}
-
-void DropdownMenus::enableChangeWhenClicked() {
-    changeWhenClicked = false;
-}

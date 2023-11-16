@@ -27,7 +27,7 @@ public:
     void draw(sf::RenderTarget& window, sf::RenderStates states) const;
     void eventHandler(sf::RenderWindow& window, sf::Event event);
     void update(); //Call in every iteration
-    Snapshot& getSnapshot();
+    Snapshot getSnapshot();
     void applySnapshot(const Snapshot& snapshot);
 
     const sf::Text getTextObj();

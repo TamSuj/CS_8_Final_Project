@@ -42,8 +42,8 @@ void MultiText::push(char text){
 
     }
 
-    if(text == ' ' || text == '\n' || text == '\t' || text == '\0')
-        History::push(getSnapshot(), this);
+//    if(text == ' ' || text == '\n' || text == '\t' || text == '\0')
+//        History::push(getSnapshot(), this);
 
 }
 
@@ -131,22 +131,23 @@ void MultiText::update() {
     }
 }
 
-Snapshot &MultiText::getSnapshot() {
+Snapshot MultiText::getSnapshot() {
     std::string text = "";
 
-    for (auto w = textList.begin(); w != textList.end(); w++)
-        text += w->getString();
+    for (auto w = textList.begin(); w != textList.end(); w++) {
+//        if(w->getString() != '\0' && w->getString() != '\n' && w->getString() != '\t')
+            text += w->getString();
+//        text += w->getChar();
+    }
 
-
+    std::cout << "MultiText snapshot: " << text << std::endl;
     Snapshot snapshot(text);
     return snapshot;
 }
 
 void MultiText::applySnapshot(const Snapshot &snapshot) {
-
 //    Clear the text to replace with a new one
     clear();
-
     push(snapshot.getString());
 }
 
@@ -171,4 +172,18 @@ bool MultiText::blankLetter() {
         return false;
 
     return textList.end()->getString() == '\0' || textList.end()->getString() == '\n' || textList.end()->getString() == '\t';
+}
+
+std::string MultiText::getString() {
+    std::string str = "";
+
+    for(auto x : textList)
+        str += x.getString();
+
+    return str;
+}
+
+void MultiText::setString(const std::string &string) {
+    clear();
+    push(string);
 }

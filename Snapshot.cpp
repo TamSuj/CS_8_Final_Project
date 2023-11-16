@@ -6,10 +6,14 @@
 
 Snapshot::Snapshot() { }
 
-Snapshot::Snapshot(std::string message) {
+Snapshot::Snapshot(const std::string& message) {
     snapshot = message;
 }
 
 std::string Snapshot::getString() const {
     return snapshot;
+}
+
+void Snapshot::setString(std::string message) {
+    snapshot = message;
 }

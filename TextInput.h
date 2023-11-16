@@ -38,7 +38,7 @@ public:
     void eventHandler(sf::RenderWindow& window, sf::Event event);
     void update(); //Call in every iteration
     void draw(sf::RenderTarget& window, sf::RenderStates states) const;
-    Snapshot& getSnapshot();
+    Snapshot getSnapshot();
     void applySnapshot(const Snapshot& snapshot);
 
 //    sf::Vector2f getGlobalBounds() const;
