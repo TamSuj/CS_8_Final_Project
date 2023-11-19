@@ -87,7 +87,7 @@ void TextInput::draw(sf::RenderTarget &window, sf::RenderStates states) const {
 
 Snapshot TextInput::getSnapshot() {
     Snapshot snapshot(text.getString());
-    std::cout << " text input snapshot: " << snapshot.getString() << std::endl;
+//    std::cout << " text input snapshot: " << snapshot.getString() << std::endl;
     return snapshot;
 }
 

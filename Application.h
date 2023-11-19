@@ -21,6 +21,9 @@
 #include "HowToUse.h"
 #include "MenuBar.h"
 
+//#include "FileTree.h"
+#include "fileDropdown.h"
+
 class Application {
     static std::vector<GUIComponent*> components;
 public:

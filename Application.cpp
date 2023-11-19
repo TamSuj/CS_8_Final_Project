@@ -35,16 +35,23 @@ void Application::run() {
     Label label3("Age:", {100, 310});
     Label label4("Note:", {100, 410});
 
-    DropdownMenus dropdownList1({"File", "Open", "Save", "Export"}, {0, 0}, {150, 50}, sf::Color(147, 181, 198));
+    MenuBar dropdownList1({"File", "Open", "Save", "Export"}, {0, 0}, {150, 50}, sf::Color(147, 181, 198));
     dropdownList1.setHighlightColor(sf::Color(251, 176, 45));
-    DropdownMenus dropdownList2({"Edit", "Undo", "Redo"}, {dropdownList1.getSize().x, 0}, {150, 50}, sf::Color(221, 237, 170));
-    DropdownMenus dropdownList3({"Format", "Font", "Font size", "Line height"}, {dropdownList2.getSize().x * 2, 0}, {150, 50}, sf::Color(240, 207, 101));
+    MenuBar dropdownList2({"Edit", "Undo", "Redo"}, {dropdownList1.getSize().x, 0}, {150, 50}, sf::Color(221, 237, 170));
+    MenuBar dropdownList3({"Format", "Font", "Font size", "Line height"}, {dropdownList2.getSize().x * 2, 0}, {150, 50}, sf::Color(240, 207, 101));
 
     MenuBar nameMenuBar({"Sample names", "Kelly", "Sam", "Mark", "Tim", "Matt", "James"}, {570, 200}, {200, 50}, sf::Color(215, 129, 106));
 
-    DropdownMenus menu1({"Others", "choice 1", "choice 2", "choice 3", "choice 4", "choice 5", "choice 6", "choice 7"}, {dropdownList3.getPosition().x + 150, 0}, {150, 50}, sf::Color(189, 79, 108));
-    DropdownMenus menu2({"Help", "Close", "Reload"}, {600, 0}, {150, 50},sf::Color(158, 197, 171));
+    MenuBar menu1({"Others", "choice 1", "choice 2", "choice 3", "choice 4", "choice 5", "choice 6", "choice 7"}, {dropdownList3.getPosition().x + 150, 0}, {150, 50}, sf::Color(189, 79, 108));
+    MenuBar menu2({"Help", "Close", "Reload"}, {600, 0}, {150, 50},sf::Color(158, 197, 171));
     HowToUse help({SCREEN_WIDTH - 350, SCREEN_HEIGHT - 350});
+
+//    FileTree
+    FileTree<std::string> ft;
+    ft.fakeTree();
+
+    fileDropdown file(ft, {0, 50}, {200, 50});
+
 
 
     //    Application::addComponent(textInput1);
@@ -68,6 +75,8 @@ void Application::run() {
 
     Application::addComponent(menu1);
     Application::addComponent(menu2);
+    Application::addComponent(file);
+
 
 //    Application::addComponent(help);
 
