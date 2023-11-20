@@ -10,9 +10,9 @@ fileDropdown::fileDropdown(FileTree<std::string> &tree, sf::Vector2f pos, sf::Ve
     setPosition(pos);
     setSize(size);
 
-    for(auto x : tree) {
-        lists.push_back(x);
-    }
+//    for(auto x : tree) {
+//        lists.push_back(x);
+//    }
 
 //  Init header (box)
 //    if(tree != nullptr)

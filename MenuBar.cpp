@@ -50,6 +50,7 @@ void MenuBar::setPosition(sf::Vector2f pos) {
 
 void MenuBar::setSize(sf::Vector2f size) {
     this->size = size;
+    box.setSize(size);
 }
 
 void MenuBar::setHeader(const std::string &message) {
@@ -70,6 +71,10 @@ sf::Vector2f MenuBar::getPosition() {
 
 sf::Vector2f MenuBar::getSize() {
     return size;
+}
+
+std::string MenuBar::getHeader() {
+    return box.getTextString();
 }
 
 void MenuBar::eventHandler(sf::RenderWindow &window, sf::Event event) {
@@ -94,6 +99,9 @@ void MenuBar::eventHandler(sf::RenderWindow &window, sf::Event event) {
             if(mpos.x > i->getPosition().x && mpos.x < i->getPosition().x + i->getSize().x && mpos.y > i->getPosition().y && mpos.y < i->getPosition().y + i->getSize().y){
                 std::string selectedText = i->getTextString();
                 i->setFillColor(highlightColor);
+
+                if(event.type == sf::Event::MouseButtonPressed)
+                    std::cout << selectedText << " is pressed" << std::endl;
 
 //                if(event.type == sf::Event::MouseButtonPressed && changeWhenClicked) {
 ////                    Send the header text to history stack before making changes
@@ -151,3 +159,11 @@ void MenuBar::applySnapshot(const Snapshot &snapshot) {
     setHeader(snapshot.getString());
 }
 
+void MenuBar::setIcon(bool isFolder) {
+    if(isFolder) {
+
+    }else {
+
+    }
+
+}

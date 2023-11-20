@@ -19,7 +19,7 @@ class DropdownMenus : public GUIComponent{
     std::vector<Box*> dropdowns;
 
     bool changeWhenClicked = true;
-    sf::Color highlightColor = sf::Color(199, 199, 199);
+    sf::Color highlightColor = sf::Color(227, 227, 227);
 public:
     DropdownMenus(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
     DropdownMenus(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE, bool changeWhenClicked = true);
@@ -32,6 +32,7 @@ public:
 
     sf::Vector2f getPosition();
     sf::Vector2f getSize();
+    std::string getHeader();
 
     void draw(sf::RenderTarget& window, sf::RenderStates states) const override;
     void eventHandler(sf::RenderWindow& window, sf::Event event) override;

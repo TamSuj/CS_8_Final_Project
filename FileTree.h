@@ -7,10 +7,22 @@
 
 #include <vector>
 #include <iostream>
-#include <sfml/Graphics.hpp>
+#include "GUIComponent.h"
+
+#include "MenuBar.h"
 
 template <typename T>
-class FileTree {
+class FileTree : public GUIComponent{
+    std::vector<MenuBar*> dropdowns;
+    int margin = 50;
+    sf::Color highlightColor = sf::Color(227, 227, 227);
+    sf::Color fileBGColor = sf::Color::White;
+
+    sf::Texture folderTexture;
+    sf::Texture fileTexture;
+    sf::Sprite folder;
+    sf::Sprite file;
+
 public:
     T name;
     bool isFile;
@@ -24,7 +36,12 @@ public:
     void printTree(FileTree<T>* root, int depth = 0);
     void fakeTree();
 
-//    void drawTree(FileTree<T>* root, int depth = 0, sf::RenderTarget& window, sf::RenderStates states);
+    void draw(sf::RenderTarget& window, sf::RenderStates states) const override;
+    void eventHandler(sf::RenderWindow& window, sf::Event event) override;
+    void update() override; //Call in every iteration
+    Snapshot getSnapshot() override;
+    void applySnapshot(const Snapshot& snapshot) override;
+
 };
 
 #include "FileTree.cpp"

@@ -18,7 +18,7 @@ class MenuBar : public GUIComponent{
     Box box;
     std::vector<Box*> dropdowns;
 
-    sf::Color highlightColor = sf::Color(199, 199, 199);
+    sf::Color highlightColor = sf::Color(227, 227, 227);
 
 public:
     MenuBar(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE);
@@ -32,12 +32,15 @@ public:
 
     sf::Vector2f getPosition();
     sf::Vector2f getSize();
+    std::string getHeader();
 
     void draw(sf::RenderTarget& window, sf::RenderStates states) const override;
     void eventHandler(sf::RenderWindow& window, sf::Event event) override;
     void update() override; //Call in every iteration
     Snapshot getSnapshot() override;
     void applySnapshot(const Snapshot& snapshot) override;
+
+    void setIcon(bool isFolder);
 
 };
 

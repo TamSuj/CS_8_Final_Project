@@ -35,7 +35,7 @@ void Application::run() {
     Label label3("Age:", {100, 310});
     Label label4("Note:", {100, 410});
 
-    MenuBar dropdownList1({"File", "Open", "Save", "Export"}, {0, 0}, {150, 50}, sf::Color(147, 181, 198));
+    MenuBar dropdownList1({"File", "Open", "Save", "Export"}, {0, 0}, {170, 50}, sf::Color(147, 181, 198));
     dropdownList1.setHighlightColor(sf::Color(251, 176, 45));
     MenuBar dropdownList2({"Edit", "Undo", "Redo"}, {dropdownList1.getSize().x, 0}, {150, 50}, sf::Color(221, 237, 170));
     MenuBar dropdownList3({"Format", "Font", "Font size", "Line height"}, {dropdownList2.getSize().x * 2, 0}, {150, 50}, sf::Color(240, 207, 101));
@@ -50,9 +50,9 @@ void Application::run() {
     FileTree<std::string> ft;
     ft.fakeTree();
 
-    fileDropdown file(ft, {0, 50}, {200, 50});
+//    fileDropdown file(ft, {0, 50}, {200, 50});
 
-
+/*
 
     //    Application::addComponent(textInput1);
     Application::addComponent(textInput2);
@@ -69,14 +69,16 @@ void Application::run() {
     Application::addComponent(monthDropdown);
     Application::addComponent(yearDropdown);
 
-    Application::addComponent(dropdownList1);
+//    Application::addComponent(dropdownList1);
     Application::addComponent(dropdownList2);
     Application::addComponent(dropdownList3);
 
     Application::addComponent(menu1);
     Application::addComponent(menu2);
-    Application::addComponent(file);
+//    Application::addComponent(file);
 
+    */
+    Application::addComponent(ft);
 
 //    Application::addComponent(help);
 
@@ -103,8 +105,8 @@ void Application::run() {
         for (GUIComponent* &g : components)
             g->update();
 
-        window.clear(BG_COLOR);
-
+//        window.clear(BG_COLOR);
+        window.clear(sf::Color::White);
         for (GUIComponent* &g : components) {
             window.draw(*g);
         }

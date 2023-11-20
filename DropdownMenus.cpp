@@ -57,6 +57,10 @@ void DropdownMenus::setHeader(const std::string &message) {
     box.setText(message);
 }
 
+std::string DropdownMenus::getHeader() {
+    return box.getTextString();
+}
+
 void DropdownMenus::setColor(sf::Color color) {
     box.setFillColor(color);
 }
