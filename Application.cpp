@@ -55,7 +55,7 @@ void Application::run() {
     MenuBar dropdownList3({"Font color", "Red", "Blue", "Green", "Yellow", "Orange", "Purple"}, {340, 0}, {150, 50}, sf::Color(240, 207, 101));
     MenuBar nameMenuBar({"Tags", "School", "Work", "Hobby", "Other"}, {570, 300}, {120, 50}, sf::Color(215, 129, 106));
     MenuBar menu1({"Font size", "Large", "Medium", "Small"}, {dropdownList3.getPosition().x + 150, 0}, {150, 50}, sf::Color(189, 79, 108));
-    MenuBar menu2({"Other", "Close", "Manuel"}, {640, 0}, {150, 50},sf::Color(158, 197, 171));
+    MenuBar menu2({"Other", "Line Height", "Highlight color", "Manuel", "Close"}, {640, 0}, {200, 50},sf::Color(158, 197, 171));
 
     menus.push_back(&dropdownList2);
     menus.push_back(&dropdownList3);
@@ -88,18 +88,9 @@ void Application::run() {
 
     Application::addComponent(menu1);
     Application::addComponent(menu2);
-//    Application::addComponent(file);
-
 
     Application::addComponent(ft);
-
     Application::addComponent(help);
-
-
-//    Application::addComponent(dropdownMenu);
-
-//    if(MouseEvents<TextInput>::mouseClicked(textInput, window))
-//        std::cout << "mouse clicked" << std::endl;
 
     while (window.isOpen())
     {
@@ -120,6 +111,15 @@ void Application::run() {
                     if(userChoice == "Close") {
                         std::cout << "Window closed" << std::endl;
                         window.close();
+                    }
+                    else if(userChoice == "Line Height"){
+                        for(auto textBox : textInputs){
+                            textBox->setLineHeight(55);
+                        }
+                    }else if(userChoice == "Highlight color"){
+                        for(auto x : menus){
+                            x->setHighlightColor(sf::Color(251, 176, 45));
+                        }
                     }
                     else if(userChoice == "Lato"){
                         for(auto textBox : textInputs){
