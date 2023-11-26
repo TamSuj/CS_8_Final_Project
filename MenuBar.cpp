@@ -100,8 +100,20 @@ void MenuBar::eventHandler(sf::RenderWindow &window, sf::Event event) {
                 std::string selectedText = i->getTextString();
                 i->setFillColor(highlightColor);
 
-                if(event.type == sf::Event::MouseButtonPressed)
+                if(event.type == sf::Event::MouseButtonPressed) {
+                    option = selectedText;
                     std::cout << selectedText << " is pressed" << std::endl;
+
+                    toggleState(CLICKED);
+
+//                    if(selectedText != ""){
+//                        if(selectedText == "Close") {
+//                            std::cout << "Window closed" << std::endl;
+//                            window.close();
+//                        }
+//                    }
+
+                }
 
 //                if(event.type == sf::Event::MouseButtonPressed && changeWhenClicked) {
 ////                    Send the header text to history stack before making changes
@@ -111,9 +123,6 @@ void MenuBar::eventHandler(sf::RenderWindow &window, sf::Event event) {
 //                    toggleState(CLICKED);
 //                }
 
-                if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-                    toggleState(CLICKED);
-                }
             }else
                 i->setFillColor(sf::Color::White);
 
@@ -166,4 +175,11 @@ void MenuBar::setIcon(bool isFolder) {
 
     }
 
+}
+
+std::string MenuBar::getSelectedText() {
+    if(option != "")
+        return option;
+
+    return "";
 }

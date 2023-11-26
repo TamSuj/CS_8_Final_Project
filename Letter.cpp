@@ -16,3 +16,16 @@ Letter::Letter(char letter) : sf::Text() {
 std::string Letter::getChar() {
     return getString();
 }
+
+//void Letter::changeFontTo(fontEnum font) {
+//    setFont(Font::getFont(font));
+//}
+//
+//void Letter::changeFontSizeTo(int size) {
+//    setCharacterSize(size);
+//
+//}
+//
+//void Letter::changeFontColorTo(sf::Color color) {
+//    setFillColor(color);
+//}

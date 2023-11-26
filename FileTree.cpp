@@ -8,22 +8,24 @@
 
 template<typename T>
 FileTree<T>::FileTree() {
+    init();
 
 }
 
 template<typename T>
 FileTree<T>::FileTree(const T &item, bool isFileNode) : name(item), isFile(isFileNode) {
+    init();
 //    std::cout << "FileTree() is called" << std::endl;
 
-    if (!folderTexture.loadFromFile("Materials/icon.png") || !fileTexture.loadFromFile("Materials/file.png"))
-        std::cout << "Error loading image" << std::endl; // Handle loading error
-
-    folder = sf::Sprite(folderTexture); // Create a sprite
-    file = sf::Sprite(fileTexture); // Create a sprite
-
-    // Set the size of the sprite (optional)
-    folder.setScale(0.5f, 0.5f); // Set scale factors for width and height
-    file.setScale(0.5f, 0.5f); // Set scale factors for width and height
+//    if (!folderTexture.loadFromFile("Materials/icon.png") || !fileTexture.loadFromFile("Materials/file.png"))
+//        std::cout << "Error loading image" << std::endl; // Handle loading error
+//
+//    folder = sf::Sprite(folderTexture); // Create a sprite
+//    file = sf::Sprite(fileTexture); // Create a sprite
+//
+//    // Set the size of the sprite (optional)
+//    folder.setScale(0.5f, 0.5f); // Set scale factors for width and height
+//    file.setScale(0.5f, 0.5f); // Set scale factors for width and height
 
 //    // Set the position of the sprite
 //    file.setPosition(300, 150);
@@ -50,12 +52,13 @@ void FileTree<T>::printTree(FileTree<T> *node, int depth) {
 
         sf::Vector2f start = {0, 0};
         std::string name = static_cast<std::string>(node->name);
-        name = (node->isFile ? "" : "> ") + name;
+//        name = (node->isFile ? "" : "> ") + name;
+        name = "     " + name;
         MenuBar* temp = new MenuBar(name, {0,0}, {150, 50});
 //        temp->setColor(sf::Color(252, 186, 3));
         temp->setPosition({static_cast<float>(depth * margin), static_cast<float>(start.y + (depth * margin))});
         temp->setHeader(name);
-        temp->setSize({170, 50});
+        temp->setSize({(name.size() * 2) + 170.0f, 50});
 
         //Issue right now is that all the file or folder in the same level are overlapped each other, find the way to
 //        separate them and make sure the position.x is correct
@@ -66,7 +69,11 @@ void FileTree<T>::printTree(FileTree<T> *node, int depth) {
             printTree(child, depth + 1);
         }
 
+    }
 
+//    Set all the dropdowns to hidden state (when first created
+    for(int i = 1; i < dropdowns.size(); ++i) {
+        dropdowns[i]->enableState(HIDDEN);
     }
 }
 
@@ -110,24 +117,34 @@ void FileTree<T>::fakeTree() {
 
 template<typename T>
 void FileTree<T>::draw(sf::RenderTarget &window, sf::RenderStates states) const {
+    int i = 0;
 
-    for(auto x : dropdowns) {
-        if(!x->checkState(HIDDEN)) {
+    //Only draw if the header is clicked
+    if(CLICKED){
+            for (auto x: dropdowns) {
+                if (!x->checkState(HIDDEN)) {
 
-            sf::RectangleShape bg;
-            bg.setPosition({0, x->getPosition().y});
-            bg.setSize(x->getSize());
-            bg.setFillColor(fileBGColor);
-            window.draw(bg);
+                    sf::RectangleShape bg;
+                    bg.setPosition({0, x->getPosition().y});
+//            bg.setSize(x->getSize());
+                    if (i != 0)
+                        bg.setSize({SCREEN_WIDTH / 2, x->getSize().y});
+                    bg.setFillColor(fileBGColor);
+                    window.draw(bg);
 
-            window.draw(*x);
+                    window.draw(*x);
 
-            if(!isFile)
-                window.draw(folder);
-            else
-                window.draw(file);
+//            window.draw(file);
+//            window.draw(folder);
+
+//            if(!isFile)
+//                window.draw(folder);
+//            else
+//                window.draw(file);
+                    i++;
+                }
+            }
         }
-    }
 }
 
 template<typename T>
@@ -136,24 +153,31 @@ void FileTree<T>::eventHandler(sf::RenderWindow &window, sf::Event event) {
 
     mpos.y -= margin;
 
-    for(auto i : dropdowns) {
+    if(mpos.x >= dropdowns[0]->getPosition().x && mpos.x <= dropdowns[0]->getSize().x + dropdowns[0]->getPosition().x &&
+       mpos.y <= dropdowns[0]->getPosition().y && mpos.y >= dropdowns[0]->getPosition().y - dropdowns[0]->getSize().y && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+        toggleState(CLICKED);
 
-//            std::cout << i->getHeader() << " pos: (" << i->getPosition().x << ", " << i->getPosition().y << ") -> (" << i->getSize().x << ", " << i->getSize().y << ")"<<  std::endl;
+    if(checkState(CLICKED)) {
+        for (auto i: dropdowns) {
 
-        if(mpos.x >= i->getPosition().x && mpos.x <= i->getSize().x + i->getPosition().x && mpos.y <= i->getPosition().y && mpos.y >= i->getPosition().y - i->getSize().y) {
-            i->setColor(highlightColor);
+            //            std::cout << i->getHeader() << " pos: (" << i->getPosition().x << ", " << i->getPosition().y << ") -> (" << i->getSize().x << ", " << i->getSize().y << ")"<<  std::endl;
 
-            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-                //Toggle HIDDEN state all the dropdowns that is the children of the node that is clicked
-                for (auto x : dropdowns) {
-                    if (x->getPosition().y > i->getPosition().y && x->getPosition().x > i->getPosition().x) {
-                        x->toggleState(HIDDEN);
+            if (mpos.x >= i->getPosition().x && mpos.x <= i->getSize().x + i->getPosition().x &&
+                mpos.y <= i->getPosition().y && mpos.y >= i->getPosition().y - i->getSize().y) {
+                i->setColor(highlightColor);
+
+                if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                    //Toggle HIDDEN state all the dropdowns that is the children of the node that is clicked
+                    for (auto x: dropdowns) {
+                        if (x->getPosition().y > i->getPosition().y && x->getPosition().x > i->getPosition().x) {
+                            x->toggleState(HIDDEN);
+                        }
                     }
                 }
-            }
 
-        }else
-            i->setColor(fileBGColor);
+            } else
+                i->setColor(fileBGColor);
+        }
     }
 
 
@@ -185,7 +209,8 @@ void FileTree<T>::update() {
 //    }
     // remove_me remove me remove
 
-
+    if(!dropdowns.size() == 0)
+        header = dropdowns[0];
 
     for (int i = 0; i < dropdowns.size(); ++i) {
         auto current = dropdowns[i];
@@ -206,6 +231,8 @@ void FileTree<T>::update() {
             for (int j = i+1; j < dropdowns.size(); ++j) {
                 if(!dropdowns[j]->checkState(HIDDEN)) {
                     dropdowns[j]->setPosition({dropdowns[j]->getPosition().x, dropdowns[j]->getPosition().y - margin});
+                    file.setPosition(dropdowns[j]->getPosition());
+                    folder.setPosition(dropdowns[j]->getPosition());
                 }
 
             }
@@ -221,6 +248,29 @@ Snapshot FileTree<T>::getSnapshot() {
 template<typename T>
 void FileTree<T>::applySnapshot(const Snapshot &snapshot) {
 
+}
+
+template<typename T>
+void FileTree<T>::init() {
+//    if (!folderTexture.loadFromFile("Materials/icon.png") || !fileTexture.loadFromFile("Materials/file.png"))
+//        std::cout << "Error loading image" << std::endl; // Handle loading error
+//
+//    folder = sf::Sprite(folderTexture); // Create a sprite
+//    file = sf::Sprite(fileTexture); // Create a sprite
+//
+//    // Set the size of the sprite (optional)
+//    folder.setScale(0.05f, 0.05f); // Set scale factors for width and height
+//    file.setScale(0.05f, 0.05f); // Set scale factors for width and height
+//
+//    // Set the position of the sprite
+//    file.setPosition(12, 10);
+//    folder.setPosition(60, 60);
+}
+
+template<typename T>
+void FileTree<T>::setHeaderColor(sf::Color color) {
+    if(header)
+        header->setColor(color);
 }
 
 #endif

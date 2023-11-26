@@ -50,6 +50,9 @@ public:
     void applySnapshot(const Snapshot& snapshot) override;
 
     bool blankLetter();
+    void setFont(fontEnum font);
+    void setFontSize(int size);
+    void setFontColor(sf::Color color);
 
 };
 

@@ -12,13 +12,13 @@ class HowToUse : public GUIComponent{
     Box box;
     sf::Vector2f size = sf::Vector2f(300, 300);
 
-    std::vector<std::string> content = {"1. Do XYZ.",
-                                        "2. Do ABC.",
-                                        "3. Do dadada.",
-                                        "4. Pray."};
+    std::vector<std::string> content = {"1. Undo: Ctrl + Z", "\tor command + Z",
+                                        "2. Close window: ", "\tclick esc.",};
 
     std::vector<Label> text;
     int lineHeight = 40;
+    bool close = false;
+    Label closeIcon;
 public:
     HowToUse(sf::Vector2f position = sf::Vector2f(0, 0));
 
@@ -27,6 +27,8 @@ public:
     Snapshot getSnapshot();
     void applySnapshot(const Snapshot& snapshot);
     void draw(sf::RenderTarget& window, sf::RenderStates states) const;
+    void setClose(bool status) {this->close = status;}
+    void toggleState();
 
 };
 

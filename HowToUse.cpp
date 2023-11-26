@@ -20,23 +20,38 @@ HowToUse::HowToUse(sf::Vector2f position) {
         text.push_back(label);
     }
 
-
+    closeIcon = Label("X", {box.getPosition().x + box.getSize().x - 30, box.getPosition().y + 15}, 20);
 
 }
 
 void HowToUse::eventHandler(sf::RenderWindow &window, sf::Event event) {
+    //If mouse is clicked in the close icon area, set close = true (to not draw the box)
+    auto mpos = (sf::Vector2f) sf::Mouse::getPosition(window);
+
+    if(KeyboardShortcut::isX())
+        close = true;
+
+//    if(!close){
+        if (event.type == sf::Event::MouseButtonPressed && mpos.x >= 735 && mpos.x <= 755 && mpos.y >= 415 &&
+            mpos.y <= 435) {
+            std::cout << "Close manuel" << std::endl;
+            close = true;
+        }
+//    }
 
 }
 
 void HowToUse::update() {
-
 }
 
 void HowToUse::draw(sf::RenderTarget &window, sf::RenderStates states) const {
-    window.draw(box);
+    if (!close) {
+        window.draw(box);
+        window.draw(closeIcon);
 
-    for(auto w : text)
-        window.draw(w);
+        for (auto w: text)
+            window.draw(w);
+    }
 }
 
 Snapshot HowToUse::getSnapshot() {
@@ -46,4 +61,9 @@ Snapshot HowToUse::getSnapshot() {
 
 void HowToUse::applySnapshot(const Snapshot &snapshot) {
 
+}
+
+void HowToUse::toggleState() {
+    std::cout << "Toggle state: " << (close == true ? "true" : "false") << std::endl;
+    close = !close;
 }

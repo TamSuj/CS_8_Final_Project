@@ -41,6 +41,12 @@ public:
     Snapshot getSnapshot();
     void applySnapshot(const Snapshot& snapshot);
 
+    void setFont(fontEnum font);
+    void setFontSize(int size);
+    void setFontColor(sf::Color color);
+    void setLineHeight(int height);
+    void setString(const std::string& message);
+
 //    sf::Vector2f getGlobalBounds() const;
 //    bool contains(sf::Vector2f point) const;
 };

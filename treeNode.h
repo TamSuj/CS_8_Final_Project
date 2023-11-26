@@ -12,6 +12,8 @@ class treeNode {
     public:
     std::string data;
     std::set<treeNode*> children;
+
+    bool isFile = false;
 };
 
 

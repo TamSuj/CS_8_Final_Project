@@ -15,6 +15,9 @@ public:
     Letter(char letter);
 
     std::string getChar();
+//    void changeFontTo(fontEnum font);
+//    void changeFontSizeTo(int size);
+//    void changeFontColorTo(sf::Color color);
 };
 
 

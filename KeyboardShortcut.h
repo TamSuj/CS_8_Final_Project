@@ -17,6 +17,7 @@ public:
     static bool isEnter();
     static bool isZoomIn();
     static bool isZoomOut();
+    static bool isX();
 };
 
 

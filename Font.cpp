@@ -20,6 +20,10 @@ std::string Font::getFontPath(fontEnum font) {
             return "Font/Lato-Bold.ttf";
         case PRODUCT_SANS:
             return "Font/ProductSans.ttf";
+        case COURIER:
+            return "Font/CourierPrime-Regular.ttf";
+        case EMOJI:
+            return "Font/NotoColorEmoji-Regular.ttf";
 
     }
 

@@ -103,3 +103,23 @@ void TextInput::applySnapshot(const Snapshot &snapshot) {
 //bool TextInput::contains(sf::Vector2f point) const {
 //    return box.getGlobalBounds().contains(point);
 //}
+
+void TextInput::setFont(fontEnum font) {
+    text.setFont(font);
+}
+
+void TextInput::setFontSize(int size) {
+    text.setFontSize(size);
+}
+
+void TextInput::setFontColor(sf::Color color) {
+    text.setFontColor(color);
+}
+
+void TextInput::setString(const std::string &message) {
+    text.setString(message);
+}
+
+void TextInput::setLineHeight(int height) {
+    text.setLineHeight(height);
+}

@@ -20,6 +20,8 @@ class MenuBar : public GUIComponent{
 
     sf::Color highlightColor = sf::Color(227, 227, 227);
 
+
+    std::string option = "";
 public:
     MenuBar(const std::string &text, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE);
     MenuBar(const std::vector<std::string> message, sf::Vector2f pos, sf::Vector2f size, sf::Color color = LIGHT_BLUE);
@@ -41,6 +43,7 @@ public:
     void applySnapshot(const Snapshot& snapshot) override;
 
     void setIcon(bool isFolder);
+    std::string getSelectedText();
 
 };
 

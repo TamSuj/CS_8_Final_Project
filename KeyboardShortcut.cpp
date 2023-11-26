@@ -44,3 +44,8 @@ bool KeyboardShortcut::isZoomOut() {
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::LSystem) || sf::Keyboard::isKeyPressed(sf::Keyboard::RSystem))
            && sf::Keyboard::isKeyPressed(sf::Keyboard::Dash);
 }
+
+bool KeyboardShortcut::isX() {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::LSystem) || sf::Keyboard::isKeyPressed(sf::Keyboard::RSystem))
+           && sf::Keyboard::isKeyPressed(sf::Keyboard::X);
+}
