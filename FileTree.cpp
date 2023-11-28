@@ -56,7 +56,7 @@ void FileTree<T>::printTree(FileTree<T> *node, int depth) {
         name = "     " + name;
         MenuBar* temp = new MenuBar(name, {0,0}, {150, 50});
 //        temp->setColor(sf::Color(252, 186, 3));
-        temp->setPosition({static_cast<float>(depth * margin), static_cast<float>(start.y + (depth * margin))});
+        temp->setPosition({static_cast<float>(depth * 40), static_cast<float>(start.y + (depth * margin))});
         temp->setHeader(name);
         temp->setSize({(name.size() * 2) + 170.0f, 50});
 

@@ -26,8 +26,8 @@ void Application::run() {
 //    DropdownMenu dropdownMenu({5, 5}, {200, 50}, sf::Color::Green);
 
 //    TextInput textInput1({250, 100} , {200, 50});
-    DropdownMenus dateDropdown({"Day", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun" }, {250, 100}, {100, 50}, sf::Color(116, 211, 174));
-    DropdownMenus monthDropdown({"Month", "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" }, {370, 100}, {120, 50}, sf::Color(103, 141, 88));
+    DropdownMenus dateDropdown({"Day", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun" }, {250, 100}, {100, 50}, sf::Color(166, 196, 138));
+    DropdownMenus monthDropdown({"Month", "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" }, {370, 100}, {120, 50}, sf::Color(166, 196, 138));
     DropdownMenus yearDropdown({"Year", "2020", "2021", "2022", "2023", "2024", "2025" }, {510, 100}, {100, 50}, sf::Color(166, 196, 138));
 
     TextInput textInput2({250, 200}, {300, 50}); //Title
@@ -51,15 +51,15 @@ void Application::run() {
     ft.fakeTree();
 //    ft.setHeaderColor(sf::Color(147, 181, 198));
 
-    MenuBar dropdownList2({"Font", "Lato", "Noto San", "Open San", "Product San", "Courier"}, {190, 0}, {150, 50}, sf::Color(221, 237, 170));
-    MenuBar dropdownList3({"Font color", "Red", "Blue", "Green", "Yellow", "Orange", "Purple"}, {340, 0}, {150, 50}, sf::Color(240, 207, 101));
-    MenuBar nameMenuBar({"Tags", "School", "Work", "Hobby", "Other"}, {570, 300}, {120, 50}, sf::Color(215, 129, 106));
+    MenuBar dropdownList2({"Font", "Lato", "Noto San", "Open San", "Product San", "Courier"}, {190, 0}, {150, 50}, sf::Color(185, 148, 112));
+    MenuBar dropdownList3({"Font color", "Red", "Blue", "Green", "Yellow", "Orange", "Purple"},  {340, 0}, {150, 50}, sf::Color(240, 207, 101));
+    MenuBar tag({"Tags", "School", "Work", "Hobby", "Other"}, {570, 300}, {120, 50}, sf::Color(215, 129, 106));
     MenuBar menu1({"Font size", "Large", "Medium", "Small"}, {dropdownList3.getPosition().x + 150, 0}, {150, 50}, sf::Color(189, 79, 108));
     MenuBar menu2({"Other", "Line Height", "Highlight color", "Manuel", "Close"}, {640, 0}, {200, 50},sf::Color(158, 197, 171));
 
     menus.push_back(&dropdownList2);
     menus.push_back(&dropdownList3);
-    menus.push_back(&nameMenuBar);
+    menus.push_back(&tag);
     menus.push_back(&menu1);
     menus.push_back(&menu2);
 
@@ -77,7 +77,7 @@ void Application::run() {
     Application::addComponent(tagInput);
     Application::addComponent(noteInput);
 
-    Application::addComponent(nameMenuBar);
+    Application::addComponent(tag);
     Application::addComponent(dateDropdown);
     Application::addComponent(monthDropdown);
     Application::addComponent(yearDropdown);

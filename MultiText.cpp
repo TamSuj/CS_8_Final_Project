@@ -189,8 +189,9 @@ void MultiText::setString(const std::string &string) {
 }
 
 void MultiText::setFont(fontEnum font) {
-    for (auto w = textList.begin(); w != textList.end(); w++)
+    for (auto w = textList.begin(); w != textList.end(); w++) {
         w->setFont(Font::getFont(font));
+    }
 
 
 }
